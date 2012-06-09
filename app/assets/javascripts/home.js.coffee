@@ -7,8 +7,14 @@ $ ->
   
   $s = $('#big_search')
   $s.submit((e) ->
-    e.preventDefault()    
-    console.log($(@).find('input[type="text"]').val())
+    e.preventDefault()   
+    
+    $.post(
+      '/api/blended_search'
+      {query: $(@).find('input[type="text"]').val()}
+      (data) ->
+        console.log(data)
+    ) 
   )
   
   

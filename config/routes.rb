@@ -17,6 +17,8 @@ Mixxy::Application.routes.draw do
   match '/signout' => 'sessions#destroy', :as => :signout
 
   match '/auth/failure' => 'sessions#failure'
+  
+  match '/api/blended_search' => 'api#blended_playlist_search'
 
   root :to => "home#index"
 
