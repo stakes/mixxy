@@ -19,7 +19,7 @@ class User
   end
   
   def add_service_with_omniauth(provider, token, secret)
-    self.services.build(provider: provider, token: token, secret: secret)
+    self.services.build(provider: provider, token: token, secret: secret) if !user.has_service(provider)
     self.save
   end
   

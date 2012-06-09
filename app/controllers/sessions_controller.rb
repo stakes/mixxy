@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, :notice => 'Signed in!'
     else
-      logger.info auth.credentials.inspect
+      logger.info auth.inspect
       current_user.add_service_with_omniauth(auth['provider'], auth['credentials']['token'], auth['credentials']['secret'])
       redirect_to root_url, :notice => 'Added auth!'
     end
