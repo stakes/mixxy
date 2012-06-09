@@ -4,6 +4,9 @@
 
 #container
     #tile-container
-        - 24.times do |i|
-            .item
-                PLAYLIST
+        - @playlists.each do |obj|
+            .item{:data => {:source => obj['source'], :url => obj['playlist_url']}}
+                %p= obj['name']
+                .controls
+                    .source= obj['source']
+                %img{:src => obj['image_url']}

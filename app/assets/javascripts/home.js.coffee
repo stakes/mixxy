@@ -10,6 +10,15 @@ $ ->
   player = new Player()
   is_open = false
   
+  $('.item').live('click', (e) ->
+    player.populate($(@).attr('data-source'), $(@).attr('data-url'))
+    if (!is_open)
+      $('#playlist-grid').css('margin-right', parseInt($('#container').css('margin-right'), 10)+240)
+      is_open = true
+    $c.masonry('reload')
+    e.preventDefault()
+  )
+  
   $s.submit((e) ->
     e.preventDefault()   
     $('.item', $tc).remove()
@@ -24,14 +33,6 @@ $ ->
         _.each(data, (val, key) ->
           $i = ich.playlist_tile(val)
           $tc.prepend($i)
-          $i.bind('click', (e) ->
-            player.populate($(@).attr('data-source'), $(@).attr('data-url'))
-            if (!is_open)
-              $('#playlist-grid').css('margin-right', parseInt($('#container').css('margin-right'), 10)+240)
-              is_open = true
-            $c.masonry('reload')
-            e.preventDefault()
-          )
         )
         
         

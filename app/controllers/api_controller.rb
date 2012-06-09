@@ -7,9 +7,7 @@ class ApiController < ApplicationController
     response = []
       
     # Mixxy playlists - later
-    
-      
-      
+
     # rdio
     rdio = RdioApi.new(:consumer_key => ENV["RDIO_APP_KEY"], :consumer_secret => ENV["RDIO_APP_SECRET"])
     rdio_res = rdio.search(:query => q, :types => 'playlist', :count => 12)
