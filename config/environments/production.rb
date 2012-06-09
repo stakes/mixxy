@@ -79,6 +79,17 @@ Mixxy::Application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
+  
+  ENV["FACEBOOK_APP_ID"] = '380684265312885'
+  ENV["FACEBOOK_APP_SECRET"] = 'ceaceb4568d747e60ed33a818d16bdcf'
+  
+  ENV["RDIO_APP_KEY"] = 'annhyg8fhmx2dmv3anuwd4c6'
+  ENV["RDIO_APP_SECRET"] = 'dNChnk5UBN'
+  
+  ENV["SC_APP_ID"] = '2904496b907a52e9e1aea2e33586f399'
+  ENV["SC_APP_SECRET"] = '05d608c205f50d8f78c7418daf67909a'
+  
+  ENV["YT_APP_KEY"] = 'AI39si4KSBLgXPqI4nwsHv7X0XasbJAHel7_VpCc8cwHGITP2Cx96fmHMwRfi5dcC-ZZw2G6TJxsKRSC6Dbgc1tvDA25jvCFxA'
 
 
 end
