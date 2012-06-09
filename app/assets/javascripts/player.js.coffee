@@ -13,4 +13,9 @@ class window.Player
       url: embed
     }
     @player_instance.html('')
-    @player_instance.append(ich.player_widget(@player_obj))
+    if src == 'rdio'
+      @player_instance.append(ich.rdio_widget(@player_obj))
+    if src == 'soundcloud'
+      @player_instance.append(ich.soundcloud_widget(@player_obj))
+    
+    @player_instance.show()

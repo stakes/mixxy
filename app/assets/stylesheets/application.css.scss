@@ -33,12 +33,19 @@ html, body {
   z-index: 500;
 }
 
+#playlist-grid {
+  margin: 0 auto;
+}
+
 #player {
   background-color: #fff;
   position: fixed;
-  bottom: 0;
+  right: 0;
+  top: 40px;
+  height: 100%;
+  width: 240px;
   z-index: 999;
-  margin: 0 auto;
+  display: none;
 }
 
 .item {
@@ -80,3 +87,6 @@ html, body {
   
 }
 
+#footer {
+  height: 160px;
+}
