@@ -1,0 +1,10 @@
+= simple_form_for(@playlist) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :url
+    = f.input :source
+
+  .form-actions
+    = f.button :submit
