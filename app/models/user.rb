@@ -23,12 +23,12 @@ class User
     self.save
   end
   
-  def has_rdio
-    self.services.where('provider' => 'rdio').count == 0 ? false : true
+  def has_service(service)
+    self.services.where('provider' => service).count == 0 ? false : true
   end
   
-  def rdio_credentials
-    s = self.services.where('provider' => 'rdio').first
+  def service_credentials(service)
+    s = self.services.where('provider' => service).first
   end
 
   def has_soundcloud
