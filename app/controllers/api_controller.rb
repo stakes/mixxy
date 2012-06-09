@@ -28,7 +28,7 @@ class ApiController < ApplicationController
       obj = {}
       obj['name'] = r.title
       obj['image_url'] = r.artwork_url
-      obj['image_url'] = r.tracks[0].artwork_url if !r.tracks[0].blank?
+      obj['image_url'] ||= r.tracks[0].artwork_url if !r.tracks[0].blank?
       obj['playlist_url'] = r.uri
       obj['source'] = 'soundcloud'
       response << obj
