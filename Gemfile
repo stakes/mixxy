@@ -18,4 +18,13 @@ gem "sass", ">= 3.1.12"
 gem "simple_form"
 gem "compass", "~> 0.12.1", :group => [:assets]
 gem "compass-rails", "~> 1.0.0", :group => [:assets]
+
 gem 'omniauth-rdio'
+gem 'omniauth-soundcloud'
+gem 'omniauth-youtube'
+
+gem 'koala'
+gem 'rdio'
+gem 'soundcloud'
+gem 'meta-spotify'
+gem 'youtube_it'
