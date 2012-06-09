@@ -1,3 +1,8 @@
 %h1= @user.name
-
-%a{:href => '/auth/rdio'} ADD RDIO!
+%ul
+  -if !current_user.has_service("rdio")
+    %a{:href => '/auth/rdio'} ADD RDIO!
+  -if !current_user.has_service("soundcloud")
+    %a{:href => '/auth/soundcloud'} ADD Soundcloud!
+  -if !current_user.has_service("youtube")
+    %a{:href => '/auth/youtube'} ADD YouTube!
