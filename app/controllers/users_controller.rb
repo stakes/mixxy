@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.where(uid: params[:id]).first
+    @user = User.find(params[:id])
   end
   
   def add_service
