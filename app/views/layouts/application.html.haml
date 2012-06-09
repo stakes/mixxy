@@ -8,8 +8,16 @@
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
     = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application", "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js", "jquery.masonry.min", "icanhaz.min"
+    = javascript_include_tag "application", "jquery.masonry.min", "icanhaz.min"
     = csrf_meta_tags
+    
+    :javascript
+        window.MIXXY = window.MIXXY || {};
+    
+    - if !current_user.blank?
+      :javascript
+        window.MIXXY.current_user = "#{current_user.id}"
+    
     = yield(:head)
   %body
     %header.navbar.navbar-fixed-top
@@ -25,6 +33,7 @@
     
     = render :partial => '/playlists/playlist_widget'          
     = render :partial => '/playlists/playlist_tile'
+    = render :partial => '/static/login_modal'
     
     #playlist-grid
       = yield
@@ -33,3 +42,10 @@
 
 
     #footer
+
+    #login-modal.modal.hide
+      .modal-header
+        %button.close{:data => {:dismiss => 'modal'}, :type => 'button'} ×
+        %h3 Connect with Facebook
+      .modal-body
+        %a{:href => '/auth/facebook'} Do it bro

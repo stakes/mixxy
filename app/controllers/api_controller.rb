@@ -45,4 +45,11 @@ class ApiController < ApplicationController
     
   end
   
+  def like_playlist
+    
+    current_user.like_playlist(params[:source], params[:url], params[:image_url])
+    render :json => {:resp => 'ok'}
+    
+  end
+  
 end

@@ -19,6 +19,7 @@ Mixxy::Application.routes.draw do
   match '/auth/failure' => 'sessions#failure'
   
   match '/api/blended_search' => 'api#blended_playlist_search'
+  match '/api/like' => 'api#like_playlist'
 
   root :to => "home#index"
 

@@ -9,4 +9,5 @@
                 %p= obj['name']
                 .controls
                     .source= obj['source']
+                    %a.like{:href => '/api/like'} Like
                 %img{:src => obj['image_url']}
