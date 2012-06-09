@@ -29,6 +29,7 @@ $ ->
           source: $(@).parent().parent().attr('data-source')
           url: $(@).parent().parent().attr('data-url')
           image_url: $(@).parent().parent().find('img').attr('src')
+          name: $(@).parent().parent().find('p').html()
         }
         (data) ->
           console.log(data)

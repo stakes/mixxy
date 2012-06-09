@@ -24,10 +24,10 @@ class User
     self.playlists.where('url' => url).count == 0 ? false : true
   end
   
-  def like_playlist(source, url, image_url)
+  def like_playlist(source, url, image_url, name)
 
     p = Playlist.where(url: url).first
-    p = Playlist.create(source: source, url: url, image_url: image_url) if p.blank?
+    p = Playlist.create(source: source, url: url, image_url: image_url, name: name) if p.blank?
 
     self.likes << p.id if !self.likes.include?(p.id)
     self.save

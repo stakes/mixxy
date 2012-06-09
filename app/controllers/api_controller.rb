@@ -22,7 +22,7 @@ class ApiController < ApplicationController
     end
     
     # soundcloud
-    soundcloud = Soundcloud.new(:client_id => ENV["SC_APP_ID"])
+    soundcloud = Soundcloud.new(:client_id => ENV["SC_APP_KEY"])
     sc_res = soundcloud.get('/playlists', :q => q, :limit => 12)
     sc_res.each do |r|
       obj = {}
@@ -47,7 +47,7 @@ class ApiController < ApplicationController
   
   def like_playlist
     
-    current_user.like_playlist(params[:source], params[:url], params[:image_url])
+    current_user.like_playlist(params[:source], params[:url], params[:image_url], params[:name])
     render :json => {:resp => 'ok'}
     
   end
