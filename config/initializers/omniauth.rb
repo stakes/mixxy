@@ -1,4 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, '380684265312885', 'ceaceb4568d747e60ed33a818d16bdcf'
-  provider :rdio, 'annhyg8fhmx2dmv3anuwd4c6', 'dNChnk5UBN'
+  provider :facebook, ENV["FACEBOOK_APP_KEY"], ENV["FACEBOOK_APP_SECRET"]
+  provider :rdio, ENV["RDIO_APP_KEY"], ENV["RDIO_APP_SECRET"]
+  provider :youtube, ENV["YOUTUBE_APP_KEY"], ENV["YOUTUBE_APP_SECRET"]
+  provider :soundcloud, ENV["SC_APP_KEY"], ENV["SC_APP_SECRET"]
 end
