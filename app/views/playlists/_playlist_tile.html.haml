@@ -1,6 +1,7 @@
 %script{:id => 'playlist_tile', :type => 'text/html'}
-    .item
-        %p {{name}}
-        .controls
-            \<div class="source {{source}}">{{source}}</div>
-        \<image class="playlist-image" src="{{image_url}}" />
+    \<div class="item" data-source="{{source}}" data-url="{{playlist_url}}">
+    %p {{name}}
+    .controls
+        \<div class="source {{source}}">{{source}}</div>
+    \<image class="playlist-image" src="{{image_url}}" />
+    \</div>

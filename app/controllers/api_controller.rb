@@ -18,7 +18,7 @@ class ApiController < ApplicationController
       obj = {}
       obj['name'] = r.name
       obj['image_url'] = r.icon
-      obj['playlist_url'] = r.embed_url
+      obj['playlist_url'] = r.embedUrl
       obj['source'] = 'rdio'
       response << obj
     end
@@ -28,11 +28,10 @@ class ApiController < ApplicationController
     sc_res = soundcloud.get('/playlists', :q => q, :limit => 12)
     sc_res.each do |r|
       obj = {}
-      logger.info(r.tracks[0])
       obj['name'] = r.title
       obj['image_url'] = r.artwork_url
       obj['image_url'] = r.tracks[0].artwork_url if !r.tracks[0].blank?
-      obj['uri'] = r.embed_url
+      obj['playlist_url'] = r.uri
       obj['source'] = 'soundcloud'
       response << obj
     end

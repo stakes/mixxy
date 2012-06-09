@@ -12,6 +12,10 @@
  *= require_tree .
 */
 
+html, body {
+  height: 100%;
+}
+
 .content {
   background-color: #eee;
   padding: 20px;
@@ -25,6 +29,15 @@
 }
 
 #container {
+  margin: 0 auto;
+  z-index: 500;
+}
+
+#player {
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
   margin: 0 auto;
 }
 

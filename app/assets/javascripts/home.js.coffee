@@ -4,10 +4,10 @@
 
 $ ->
   
-  
   $s = $('#big_search')
   $c = $('#container')
   $tc = $('#tile-container')
+  player = new Player()
   
   $s.submit((e) ->
     e.preventDefault()   
@@ -18,11 +18,20 @@ $ ->
       '/api/blended_search'
       {query: $(@).find('input[type="text"]').val()}
       (data) ->
-        console.log(data)
+        
+        # console.log(data)
         _.each(data, (val, key) ->
-          $tc.prepend(ich.playlist_tile(val))
+          $i = ich.playlist_tile(val)
+          $tc.prepend($i)
+          $i.bind('click', (e) ->
+            player.populate($(@).attr('data-source'), $(@).attr('data-url'))
+            e.preventDefault()
+          )
         )
+        
+        
         $c.masonry('reload')
+        
     ) 
   )
   

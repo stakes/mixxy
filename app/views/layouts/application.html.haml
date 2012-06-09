@@ -22,10 +22,13 @@
           .row
             .span12
               = render 'layouts/messages'
-              
+    
+    = render :partial => '/playlists/playlist_widget'          
     = render :partial => '/playlists/playlist_tile'
     
     = yield
+    
+    #player
     
     
     %footer
