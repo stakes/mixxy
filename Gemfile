@@ -24,7 +24,7 @@ gem 'omniauth-soundcloud'
 gem 'omniauth-youtube'
 
 gem 'koala'
-gem 'rdio'
+gem 'rdio_api', :git => 'git://github.com/stakes/rdio_api.git'
 gem 'soundcloud'
 gem 'meta-spotify'
 gem 'youtube_it'
