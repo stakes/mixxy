@@ -6,19 +6,27 @@ $ ->
   
   
   $s = $('#big_search')
+  $c = $('#container')
+  $tc = $('#tile-container')
+  
   $s.submit((e) ->
     e.preventDefault()   
+    $('.item', $tc).remove()
     
     $.post(
+    
       '/api/blended_search'
       {query: $(@).find('input[type="text"]').val()}
       (data) ->
-        console.log(data)
+        _.each(data, (val, key) ->
+          $tc.prepend(ich.playlist_tile(val))
+        )
+        $c.masonry('reload')
     ) 
   )
   
   
-  $c = $('#container')
+  
   $c.imagesLoaded () ->
     $c.masonry(
       itemSelector: '.item'
