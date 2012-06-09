@@ -18,6 +18,7 @@ $ ->
       '/api/blended_search'
       {query: $(@).find('input[type="text"]').val()}
       (data) ->
+        console.log(data)
         _.each(data, (val, key) ->
           $tc.prepend(ich.playlist_tile(val))
         )
@@ -31,5 +32,4 @@ $ ->
     $c.masonry(
       itemSelector: '.item'
       isFitWidth: true
-      isAnimated: true
     )

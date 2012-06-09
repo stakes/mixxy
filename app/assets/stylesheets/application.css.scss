@@ -29,8 +29,8 @@
 }
 
 .item {
-  width: 280px;
-  height: 280px;
+  width: 180px;
+  height: 180px;
   margin: 10px;
   background-color: #000;
   position: relative;
@@ -41,17 +41,20 @@
     top: 10px;
     left: 10px;
     display: inline-block;
-    max-width: 260px;
+    max-width: 160px;
     background-color: rgba(0,0,0,.7);
     line-height: 24px;
     font-size: 18px;
     color: #fff;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
     
   }
   
   .playlist-image {
-    width: 280px;
-    height: 280px;
+    width: 180px;
+    height: 180px;
   }
   
 }
