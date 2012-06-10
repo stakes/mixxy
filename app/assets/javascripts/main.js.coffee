@@ -85,6 +85,7 @@ $ ->
     itemSelector: '.item'
     isFitWidth: true
     columnWidth: 240
+    isAnimated: true
   )
   
   $s.submit((e) ->
