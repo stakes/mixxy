@@ -32,7 +32,9 @@ class window.Player
       tgt.append(ich.soundcloud_widget(@player_obj))
     if src == 'youtube'
       tgt.append(ich.youtube_widget(@player_obj))
-    
+    if src == 'spotify'
+      tgt.append(ich.spotify_widget(@player_obj))
+  
     
 
   destroy: () ->

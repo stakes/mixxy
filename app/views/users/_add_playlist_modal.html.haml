@@ -1,7 +1,7 @@
 = render :partial => 'playlist_list_item'
 
 %script{:id => 'playlist_modal', :type => 'text/html'}
-  #login-modal.modal
+  #playlist-modal.modal
     .modal-header
       %button.close{:data => {:dismiss => 'modal'}, :type => 'button'} ×
       %h3 Add {{source}} playlists
@@ -10,3 +10,18 @@
       \<div id="playlist-items" data-source="{{source}}">
       %img{:src => '/assets/throbber.gif'}
       \</div>
+      
+%script{:id => 'spotify_modal', :type => 'text/html'}
+  #playlist-modal.modal
+    .modal-header
+      %button.close{:data => {:dismiss => 'modal'}, :type => 'button'} ×
+      %h3 Add {{source}} playlists
+    .modal-body
+      %form#spotify-form{:method => 'POST', :action => '/api/add/spotify'}
+        %label Spotify URI
+        %input#uri-input{:type => 'text', :name => 'uri'}
+        %label Name your playlist
+        %input#title-input.span6{:type => 'text', :name => 'title'}
+        %br
+        %input.btn.btn-success{:type => 'submit'}
+        

@@ -73,4 +73,11 @@ class ApiController < ApplicationController
     
   end
   
+  def add_spotify_playlist
+    
+    current_user.add_playlist(params[:source], params[:url], params[:image_url], params[:name])
+    render :json => {:resp => 'ok'}
+  
+  end
+  
 end
