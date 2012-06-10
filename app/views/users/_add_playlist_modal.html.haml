@@ -1,0 +1,12 @@
+= render :partial => 'playlist_list_item'
+
+%script{:id => 'playlist_modal', :type => 'text/html'}
+  #login-modal.modal
+    .modal-header
+      %button.close{:data => {:dismiss => 'modal'}, :type => 'button'} ×
+      %h3 Add {{source}} playlists
+    .modal-body
+      %p Add a playlist from me or one of the people I follow
+      \<div id="playlist-items" data-source="{{source}}">
+      %img{:src => '/assets/throbber.gif'}
+      \</div>

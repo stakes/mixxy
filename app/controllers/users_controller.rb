@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @likes = []
     @user.likes.each {|l| @likes << Playlist.find(l)}
+    @playlists = @user.playlists
+    
+    
   end
   
   def add_service

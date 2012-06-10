@@ -209,6 +209,20 @@ button, input {
   }
 }
 
+#playlist-items {
+  .list-item {
+    img {
+      float: left;
+    }
+    h3 {
+      display: block;
+      font-weight: bold;
+    }
+    border-top: 1px solid #ccc;
+    padding: 4px 0;
+  }
+}
+
 #footer {
   height: 240px;
   margin-top: 120px;

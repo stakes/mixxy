@@ -22,7 +22,6 @@ $ ->
   $('.item a.like').live('click', (e) ->
     e.preventDefault()
     if window.MIXXY.current_user?
-      console.log($(@).parent().parent())
       $.post(
         '/api/like'
         {
@@ -32,6 +31,7 @@ $ ->
           name: $(@).parent().parent().find('p').html()
         }
         (data) ->
+          # TODO: visual feedback on like
           console.log(data)
       )
     else
@@ -67,3 +67,43 @@ $ ->
         
     ) 
   )
+  
+  # users
+  
+  $playlist_modal = null
+  
+  $('#actions a.add').live('click', (e) ->
+    e.preventDefault()
+    console.log($(@).hasClass('soundcloud'))
+    obj = { source: 'soundcloud' }
+    $playlist_modal = $(ich.playlist_modal(obj))
+    $playlist_modal.modal()
+    $pl = $('#playlist-items')
+    $.get(
+      '/api/browse/soundcloud'
+      (data) -> 
+        $pl.html('')
+        _.each(data, (val, key) ->
+          $l = ich.playlist_list_item(val)
+          $pl.prepend($l)
+        )
+    )    
+  )
+  $('#playlist-items .list-item').live('click', (e) ->
+    e.preventDefault()
+    $('#playlist-items .list-item').die('click').css('opacity', .4)
+    $.post(
+      '/api/add'
+      {
+        source: $(@).parent().attr('data-source')
+        url: $(@).attr('data-url')
+        image_url: $(@).find('img').attr('src')
+        name: $(@).find('h3').html()
+      }
+      (data) ->
+        # TODO: visual feedback on add
+        
+        window.location.reload(true)
+    )
+  )
+  

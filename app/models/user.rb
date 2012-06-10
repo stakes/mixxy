@@ -39,6 +39,20 @@ class User
     self.likes << p.id if !self.likes.include?(p.id)
     self.save
     
+  end
+  
+  def add_playlist(source, url, image_url, name)
+
+    p = Playlist.where(url: url).first
+    if p.blank?
+      p = Playlist.create(source: source, url: url, image_url: image_url, name: name, owner_id: self.id) 
+      self.playlists << p
+    else
+      p = like_playlist(source, url, image_url, name) 
+    end
+    
+    self.save
+    
   end    
   
   def has_service(service)

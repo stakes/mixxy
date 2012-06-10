@@ -4,16 +4,17 @@ class Playlist
   field :url, :type => String
   field :source, :type => String
   field :playlist_id, :type => String
+  field :owner_id, :type => String
   field :image_url, :type => String
   has_and_belongs_to_many :users
   
   def self.get_sc_followings_playlists(user_id)
     client = Soundcloud.new(:access_token => User.find(user_id).get_auth('soundcloud').token)
     playlist_array = []
-    followings = client.get("/me/followings", :limit => 10)
+    followings = client.get("/me/followings", :limit => 4)
     followings.each do |f|
       if f.playlist_count > 0
-        playlists = client.get("/users/#{f.id}/playlists", :limit => 4)
+        playlists = client.get("/users/#{f.id}/playlists", :limit => 2)
         playlists.each do |r|
           obj = {}
           obj["username"] = f.username

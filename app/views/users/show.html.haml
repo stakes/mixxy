@@ -1,3 +1,4 @@
+= render :partial => 'add_playlist_modal'
 .container
   .profile
     .row
@@ -13,25 +14,33 @@
             #actions
               %ul
                 %li
-                  %a{:href => '/api/browse/spotify'} Add Spotify Playlists
+                  %a.add.spotify{:href => '/api/browse/spotify'} Add Spotify Playlists
                 %li
                   - if !current_user.has_service("rdio")
                     %a{:href => '/auth/rdio'} Connect with Rdio
                   - else
-                    %a{:href => '/api/playlists'} Add Rdio playlists
+                    %a.add.rdio{:href => '/api/playlists'} Add Rdio playlists
                 %li
                   -if !current_user.has_service("soundcloud")
                     %a{:href => '/auth/soundcloud'} Connect with Soundcloud
                   - else
-                    %a{:href => '/api/browse/soundcloud'} Add Soundcloud playlists
+                    %a.add.soundcloud{:href => '/api/browse/soundcloud'} Add Soundcloud playlists
                 %li
                   -if !current_user.has_service("youtube")
                     %a{:href => '/auth/youtube'} Connect with YouTube
                   - else
-                    %a{:href => '/auth/rdio'} Add YouTube playlists
+                    %a.add.youtube{:href => '/auth/rdio'} Add YouTube playlists
 
 #container
   #tile-container
+  
+    - @playlists.each do |obj|
+      .item{:data => {:source => obj['source'], :url => obj['url']}}
+        %p= obj['name']
+        %img{:src => obj['image_url']}
+        .controls
+          .source.ir{:class => obj['source']}= obj['source']
+          %a.like{:href => '/api/like'} Like
   
     - @likes.each do |obj|
       .item{:data => {:source => obj['source'], :url => obj['url']}}
