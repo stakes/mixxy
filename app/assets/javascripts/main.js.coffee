@@ -12,30 +12,36 @@ $ ->
   
   $('.item img').live('click', (e) ->
     e.preventDefault()
-    $('.item.flip').animate(
+    $('.item.flip .front').children().hide()
+    $('.item.flip').removeClass('flip').animate(
       {
         width: 200
         height: 226
       }
-      1000
-    ).removeClass('flip')
-    $('.item').removeClass('flip')
+      750
+      () ->
+        $(@).find('.front').children().fadeIn()
+    )
     p = $(@).parent()
-    pt = p.parent()
-    pt.addClass('flip')
-    pt.animate(
+    $pt = p.parent()
+    $pt.addClass('flip')
+    $pt.animate(
       {
         width: 436
         height: 480
       }
-      1000
+      750
       () ->
         $c.masonry('reload')
     )
-    # player.populate(p.attr('data-source'), p.attr('data-url'))
-    # if (!window.MIXXY.is_player_open?)
-    #   $('#playlist-grid').css('margin-right', '240px')
-    #   window.MIXXY.is_player_open = true
+    player.destroy()
+    setTimeout(
+      () ->
+        player.loadPlayer($pt.find('.back'), p.attr('data-source'), p.attr('data-url'))
+      2000
+    )
+    if (!window.MIXXY.is_player_open?)
+      window.MIXXY.is_player_open = true
     $c.masonry('reload')
   )
   $('.item a.like').live('click', (e) ->

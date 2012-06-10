@@ -7,16 +7,29 @@ class window.Player
     
     @player_instance = $('#player')
     
-  populate: (src, embed) ->
+  attach: (tgt, src, embed) ->
+    @.destroy()
+    @.loadPlayer(tgt, src, embed)
+    setTimeout(
+      () ->
+        @.loadPlayer(tgt, src, embed)
+      2000
+    )
+    
+  loadPlayer: (tgt, src, embed) ->
+    @player_instance = tgt
     if src == 'soundcloud'
       source = encodeURI(source)
     @player_obj = {
       source: src
       url: embed
     }
-    @player_instance.html('')
+    tgt.html('')
     if src == 'rdio'
-      @player_instance.append(ich.rdio_widget(@player_obj))
+      tgt.append(ich.rdio_widget(@player_obj))
     if src == 'soundcloud'
-      @player_instance.append(ich.soundcloud_widget(@player_obj))
-    @player_instance.show()
+      tgt.append(ich.soundcloud_widget(@player_obj))
+    
+
+  destroy: () ->
+    @player_instance.html('')

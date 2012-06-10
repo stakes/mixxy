@@ -1,8 +1,10 @@
 %script{:id => 'playlist_tile', :type => 'text/html'}
-    \<div class="item" data-source="{{source}}" data-url="{{playlist_url}}">
-    %p {{name}}
-    \<img class="playlist-image" src="{{image_url}}" />
-    .controls
-        \<div class="source ir {{source}}">{{source}}</div>
-        %a.like{:href => '/api/like'} Like
-    \</div>
+    .item
+        \<div class="front playlist-item" data-source="{{source}}" data-url="{{playlist_url}}">
+        %p {{name}}
+        \<img class="playlist-image" src="{{image_url}}" />
+        .controls
+            \<div class="source ir {{source}}">{{source}}</div>
+            %a.like{:href => '/api/like'} Like
+        \</div>
+        .back

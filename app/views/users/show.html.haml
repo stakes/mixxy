@@ -35,17 +35,21 @@
   #tile-container
   
     - @playlists.each do |obj|
-      .item{:data => {:source => obj['source'], :url => obj['url']}}
-        %p= obj['name']
-        %img{:src => obj['image_url']}
-        .controls
-          .source.ir{:class => obj['source']}= obj['source']
-          %a.like{:href => '/api/like'} Like
+      .item
+        .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+          %p= obj['name']
+          %img{:src => obj['image_url']}
+          .controls
+            .source.ir{:class => obj['source']}= obj['source']
+            %a.like{:href => '/api/like'} Like
+        .back
   
     - @likes.each do |obj|
-      .item{:data => {:source => obj['source'], :url => obj['url']}}
-        %p= obj['name']
-        %img{:src => obj['image_url']}
-        .controls
-          .source.ir{:class => obj['source']}= obj['source']
-          %a.like{:href => '/api/like'} Like
+      .item
+        .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+          %p= obj['name']
+          %img{:src => obj['image_url']}
+          .controls
+            .source.ir{:class => obj['source']}= obj['source']
+            %a.like{:href => '/api/like'} Like
+        .back
