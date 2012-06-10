@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to root_url, :notice => 'Signed in!'
     else
       logger.info auth.inspect
-      current_user.add_service_with_omniauth(auth['provider'], auth['credentials']['token'], auth['credentials']['secret'])
+      current_user.add_service_with_omniauth(auth['provider'], auth['credentials']['token'], auth['credentials']['secret'], :yt_id => auth.extra.user_hash.author[0].uri['$t'] if auth['provider']=='youtube')
       redirect_to root_url, :notice => 'Added auth!'
     end
   end
