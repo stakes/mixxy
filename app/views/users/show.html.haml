@@ -65,7 +65,7 @@
                   %img{:src => obj['image_url']}
                   .controls
                     .source.ir{:class => obj['source']}= obj['source']
-                    %a.like{:href => '/api/like'} Like
+                    %a.ir.like{:href => '/api/like'} Like
                 .back
               
       #starred.tab-pane
@@ -80,5 +80,5 @@
                   %img{:src => obj['image_url']}
                   .controls
                     .source.ir{:class => obj['source']}= obj['source']
-                    %a.like{:href => '/api/like'} Like
+                    %a.ir.like{:href => '/api/like'} Like
                 .back

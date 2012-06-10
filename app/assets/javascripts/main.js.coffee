@@ -56,6 +56,7 @@ $ ->
   $('.item a.like').live('click', (e) ->
     e.preventDefault()
     if window.MIXXY.current_user?
+      e.addClass('liked')
       $.post(
         '/api/like'
         {
@@ -131,7 +132,7 @@ $ ->
           {
             source: 'spotify'
             url: $(@).find('#uri-input').val()
-            image_url: '/assets/spotify-default.png'
+            image_url: '/assets/default-spotify.png'
             name: $(@).find('#title-input').val()
           }
           (data) ->

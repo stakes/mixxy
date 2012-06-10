@@ -192,6 +192,21 @@ p.empty-list-state {
   padding: 4px;
   position: relative;
   
+  a.like {
+    height: 22px;
+    width: 24px;
+    background-image: url('/assets/star-icon.png');
+    background-repeat: no-repeat;
+    &:hover {
+      background-position: 0 -24px;
+    }
+    &.liked {
+      background-position: 0 -24px;
+      cursor: pointer;
+    }
+  }
+  
+  
   img {
     width: 200px;
     height: 200px;
@@ -260,6 +275,7 @@ p.empty-list-state {
   }
   
 }
+
 
 
 

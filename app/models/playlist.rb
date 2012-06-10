@@ -22,6 +22,7 @@ class Playlist
           obj['image_url'] = r.artwork_url
           obj['image_url'] = r.tracks[0].artwork_url if (!r.tracks[0].blank? and obj['image_url'].nil?)
           obj['image_url'] = r.user.avatar_url if obj['image_url'].nil?
+          obj['image_url'] = '/assets/default-soundcloud.png' if obj['image_url'].include? 'default_avatar_large.png'
           obj['playlist_url'] = r.uri
           obj['source']= 'soundcloud'
           playlist_array << obj
