@@ -19,7 +19,8 @@ class Playlist
           obj["username"] = f.username
           obj['name'] = r.title
           obj['image_url'] = r.artwork_url
-          obj['image_url'] ||= r.tracks[0].artwork_url if !r.tracks[0].blank?
+          obj['image_url'] = r.tracks[0].artwork_url if (!r.tracks[0].blank? and obj['image_url'].nil?)
+          obj['image_url'] = r.user.avatar_url if obj['image_url'].nil?
           obj['playlist_url'] = r.uri
           obj['source']= 'soundcloud'
           playlist_array << obj
