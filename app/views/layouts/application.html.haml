@@ -32,7 +32,7 @@
         .right
           - if user_signed_in?
             %li
-              Logged in as #{link_to current_user.name, user_path(current_user)}
+              Logged in as #{link_to current_user.name, '/me'}
             %li
               = link_to('Logout', signout_path)
           - else
@@ -46,15 +46,7 @@
     /       = render 'layouts/navigation'
           
           
-    - if params[:controller] == 'static'
-      #form-container
-        .container
-          .row
-            = form_tag('/search', :method => 'get', :id => 'big_search') do
-              .span7.offset1
-                = text_field_tag(:query, '', :placeholder => 'I want to listen to...')
-              .span3 
-                = submit_tag('Find playlists', :id => 'search_submit')
+      
       
 
           

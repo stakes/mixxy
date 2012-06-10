@@ -34,6 +34,19 @@ class ApiController < ApplicationController
       obj['source'] = 'soundcloud'
       response << obj
     end
+    
+    # YouTube
+    feed = HTTParty.get("https://gdata.youtube.com/feeds/api/playlists/snippets?v=2&q=#{URI::encode(q)}&max-results=12", :format => :xml)
+    feed['feed']['entry'].each do |entry| 
+      response << {
+        'source' => 'youtube',
+        'playlist_url' => entry['yt:playlistId'],
+        'name' => entry['title'],
+        'image_url' => entry['media:group']['media:thumbnail'][2]['url']
+        # 'username' => youtube_username
+      }
+    end
+    
     response = response.sort_by { rand }
     
     

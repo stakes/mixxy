@@ -10,6 +10,10 @@
 
 html, body {
   height: 100%;
+  background-color: #b7ddec;
+  background-image: url('/assets/bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 html, body, p,
@@ -37,7 +41,11 @@ button, input {
 }
 
 #playlist-grid {
-  margin: auto 0;
+  margin: auto 34px;
+  background-color: #fff;
+  padding-bottom: 44px;
+  @include box-shadow(rgba(0,0,0,.75) 0 1px 5px);
+  border-top: 4px solid #444;
 }
 
 #player {
@@ -58,6 +66,7 @@ button, input {
   z-index: 900;
   position: relative;
   padding: 12px 0 10px;
+  margin-bottom: 44px;
   input[type="text"] {
     font-size: 28px;
     line-height: 32px;
@@ -95,10 +104,10 @@ button, input {
 
 #abovenav {
   height: 100px;
-  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+  //@include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
   z-index: 999;
   position: relative;
-  background-color: #eee;
+//  background-color: #eee;
   a img {
     margin-top: 15px;
   }
@@ -123,27 +132,31 @@ button, input {
 }
 
 .item {
-  width: 200px;
-  height: 226px;
+  width: 220px;
+  height: 260px;
+  margin-bottom: 10px;
   padding: 4px;
-  margin: 10px;
   position: relative;
   
   img {
     width: 200px;
     height: 200px;
+    margin: 10px;
   }
   
   p {
     
     position: absolute;
+    bottom: 34px;
+    left: -6px;
     display: inline-block;
     max-width: 192px;
-    padding: 4px;
-    background-color: rgba(0,0,0,.7);
+    padding: 4px 8px;
+    background-color: rgba(0,0,0,1);
     line-height: 24px;
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
+    font-weight: bold;
     text-shadow: 0 1px 0 #000;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
@@ -152,6 +165,7 @@ button, input {
   }
   
   .controls {
+    padding: 10px 12px 0;
     .source {
       float: left;
       width: 22px;
@@ -189,6 +203,8 @@ button, input {
     margin-top: 18px;
     font-size: 36px;
   }
+  margin-bottom: 22px;
+  padding-bottom: 22px
 }
 
 .user-image-container {
@@ -223,13 +239,14 @@ button, input {
 
 #footer {
   height: 240px;
-  margin-top: 120px;
-  background-color: #ccc;
+  margin-top: 20px;
 }
+
+
+
 
 // Face-smashing 3d transforms
 .item {
-	font-size: .8em;
 	-webkit-perspective: 600px;
 	-moz-perspective: 600px;
 }

@@ -13,7 +13,7 @@ class window.Player
     setTimeout(
       () ->
         @.loadPlayer(tgt, src, embed)
-      2000
+      1500
     )
     
   loadPlayer: (tgt, src, embed) ->
@@ -29,6 +29,8 @@ class window.Player
       tgt.append(ich.rdio_widget(@player_obj))
     if src == 'soundcloud'
       tgt.append(ich.soundcloud_widget(@player_obj))
+    if src == 'youtube'
+      tgt.append(ich.youtube_widget(@player_obj))
     
 
   destroy: () ->
