@@ -164,6 +164,17 @@ button, input {
     
   }
   
+  p:after {
+    content: "";
+    background-image: url('/assets/corner.png');
+    width: 5px;
+    height: 5px;
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+  }
+  
   .controls {
     padding: 10px 12px 0;
     .source {
