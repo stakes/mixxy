@@ -113,7 +113,7 @@ $ ->
   
   $playlist_modal = null
   
-  $('#actions a.add').live('click', (e) ->
+  $('#actions a.enabled').live('click', (e) ->
     e.preventDefault()
     console.log($(@).hasClass('soundcloud'))
     obj = { source: $(@).attr('class').split(' ')[1] }

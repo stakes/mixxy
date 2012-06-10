@@ -21,23 +21,23 @@
           %h3 Add playlists to your collection
           %ul
             %li
-              %a.add.spotify{:href => '/api/browse/spotify'}
+              %a.add.enabled.spotify{:href => '/api/browse/spotify'}
             %li
               - if !current_user.has_service("rdio")
                 %a.add.rdio{:href => '/auth/rdio'}
               - else
-                %a.add.rdio{:href => '/api/browse/rdio'}
+                %a.add.enabled.rdio{:href => '/api/browse/rdio'}
             .clearfix
             %li
               -if !current_user.has_service("soundcloud")
                 %a.add.soundcloud{:href => '/auth/soundcloud'}
               - else
-                %a.add.soundcloud{:href => '/api/browse/soundcloud'}
+                %a.add.enabled.soundcloud{:href => '/api/browse/soundcloud'}
             %li
               -if !current_user.has_service("youtube")
                 %a.add.youtube{:href => '/auth/youtube'}
               - else
-                %a.add.youtube{:href => '/api/browse/youtube'}
+                %a.add.enabled.youtube{:href => '/api/browse/youtube'}
 
   %ul.nav.nav-tabs#user-tabs
     %li.active
