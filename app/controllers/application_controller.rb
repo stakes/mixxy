@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
 
   private
+  
+    def after_sign_in_path_for(resource)
+        stored_location_for(resource) || '/me'
+    end
+  
     def current_user
       begin
         @current_user ||= User.find(session[:user_id]) if session[:user_id]

@@ -7,10 +7,12 @@ $ ->
 
   $s = $('#big_search')
   $c = $('#container')
+  $gc = $('.item-grid-container')
   $tc = $('#tile-container')
   player = new Player()
   
   $('.item img').live('click', (e) ->
+    
     e.preventDefault()
     $('.item.flip .front').children().hide()
     $('.item.flip').removeClass('flip').animate(
@@ -34,11 +36,16 @@ $ ->
       }
       750
       () ->
-        $c.masonry('reload')
+        if $gc.length > 0
+          $gc.masonry('reload')
+        else
+          $c.masonry('reload')
     )
     player.destroy()
     setTimeout(
       () ->
+        console.log($pt)
+        console.log($pt.find('.back'))
         player.loadPlayer($pt.find('.back'), p.attr('data-source'), p.attr('data-url'))
       2000
     )
@@ -72,6 +79,12 @@ $ ->
     isFitWidth: true
     columnWidth: 240
     isAnimated: true
+  )
+  
+  $gc.masonry(
+    itemSelector: '.item'
+    isFitWidth: true
+    columnWidth: 240
   )
   
   $s.submit((e) ->
@@ -134,4 +147,19 @@ $ ->
         window.location.reload(true)
     )
   )
+  
+  # user tabs
+  
+
+  $('#user-tabs a:first').tab('show')
+  $('#user-tabs a').click((e) ->
+    e.preventDefault();
+    $(@).tab('show');
+    $gc.masonry(
+      itemSelector: '.item'
+      isFitWidth: true
+      columnWidth: 240
+    )
+  )
+
   

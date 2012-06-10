@@ -18,6 +18,7 @@ class window.Player
     
   loadPlayer: (tgt, src, embed) ->
     @player_instance = tgt
+    console.log(@player_instance)
     if src == 'soundcloud'
       source = encodeURI(source)
     @player_obj = {
@@ -31,6 +32,7 @@ class window.Player
       tgt.append(ich.soundcloud_widget(@player_obj))
     if src == 'youtube'
       tgt.append(ich.youtube_widget(@player_obj))
+    
     
 
   destroy: () ->

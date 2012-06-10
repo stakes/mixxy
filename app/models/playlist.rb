@@ -34,13 +34,14 @@ class Playlist
   
   def self.get_rdio_playlists(rdio_client)
     
-    logger.info rdio_client.getPlaylists(:user => 's72861')
-    playlists = rdio_client.getPlaylists(:user => 's72861')
-    logger.info rdio_client.currentUser
+    
+    playlists = rdio_client.getPlaylists(:user => "#{rdio_client.currentUser[:key]}")
+
     playlists = playlists.collab + playlists.owned + playlists.subscribed
     playlist_array = []
     playlists.each do |r|
       obj = {}
+      obj['username'] = rdio_client.currentUser[:firstName]+' '+rdio_client.currentUser[:lastName]
       obj['name'] = r.name
       obj['image_url'] = r.icon
       obj['playlist_url'] = r.embedUrl
