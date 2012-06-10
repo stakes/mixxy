@@ -26,6 +26,7 @@ Mixxy::Application.routes.draw do
   match '/api/get_sc_followings_playlists' => 'users#get_sc_followings_playlists'
   match '/api/browse/rdio' => 'users#get_rdio_playlists'
   match '/api/browse/soundcloud' => 'users#get_sc_followings_playlists'
+  match '/api/browse/youtube' => 'users#get_youtube_playlists'
 
   root :to => "home#index"
 

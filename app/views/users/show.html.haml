@@ -29,7 +29,7 @@
                   -if !current_user.has_service("youtube")
                     %a{:href => '/auth/youtube'} Connect with YouTube
                   - else
-                    %a.add.youtube{:href => '/auth/rdio'} Add YouTube playlists
+                    %a.add.youtube{:href => '/api/browse/youtube'} Add YouTube playlists
 
 #container
   #tile-container

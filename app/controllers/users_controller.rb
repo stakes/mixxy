@@ -43,6 +43,11 @@ class UsersController < ApplicationController
     render :json => data
   end
   
+  def get_youtube_playlists
+    data = current_user.youtube_playlists
+    render :json => data
+  end
+  
   protected
   def get_rdio_client
     if current_user.has_service('rdio')
