@@ -11,7 +11,7 @@
 #container
   #tile-container
     - @likes.each do |obj|
-      .item{:data => {:source => obj['source'], :url => obj['playlist_url']}}
+      .item{:data => {:source => obj['source'], :url => obj['url']}}
         %p= obj['name']
         .controls
           .source= obj['source']
