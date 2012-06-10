@@ -18,6 +18,8 @@ Mixxy::Application.routes.draw do
 
   match '/auth/failure' => 'sessions#failure'
   
+  match '/me' => 'users#me'
+  
   match '/api/blended_search' => 'api#blended_playlist_search'
   match '/api/like' => 'api#like_playlist'
   match '/api/add' => 'api#add_playlist'

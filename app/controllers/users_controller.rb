@@ -14,6 +14,20 @@ class UsersController < ApplicationController
     
   end
   
+  def me
+    
+    if current_user.blank?
+      redirect_to '/'
+    else
+      @user = current_user
+      @likes = []
+      @user.likes.each {|l| @likes << Playlist.find(l)}
+      @playlists = @user.playlists
+      render :show
+    end
+    
+  end
+  
   def add_service
     current_user.add_service_with_omniauth(params[:provider])
   end

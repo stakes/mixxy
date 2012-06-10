@@ -13,7 +13,7 @@ class window.Player
     setTimeout(
       () ->
         @.loadPlayer(tgt, src, embed)
-      2000
+      1500
     )
     
   loadPlayer: (tgt, src, embed) ->
