@@ -17,7 +17,6 @@ class window.Player
     )
     
   loadPlayer: (tgt, src, embed) ->
-    console.log(src)
     @player_instance = tgt
     if src == 'soundcloud'
       source = encodeURI(source)

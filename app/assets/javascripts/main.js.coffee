@@ -39,7 +39,6 @@ $ ->
     player.destroy()
     setTimeout(
       () ->
-        console.log(p.attr('data-source'))
         player.loadPlayer($pt.find('.back'), p.attr('data-source'), p.attr('data-url'))
       2000
     )
