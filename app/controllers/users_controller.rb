@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   
   def get_sc_followings_playlists
     data = Playlist.get_sc_followings_playlists(current_user.id.to_s)
-    
     render :json => data
   end
 end

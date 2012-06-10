@@ -8,6 +8,8 @@ class window.Player
     @player_instance = $('#player')
     
   populate: (src, embed) ->
+    if src == 'soundcloud'
+      source = encodeURI(source)
     @player_obj = {
       source: src
       url: embed

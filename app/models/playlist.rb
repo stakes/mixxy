@@ -10,10 +10,10 @@ class Playlist
   def self.get_sc_followings_playlists(user_id)
     client = Soundcloud.new(:access_token => User.find(user_id).get_auth('soundcloud').token)
     playlist_array = []
-    followings = client.get("/me/followings")
+    followings = client.get("/me/followings", :limit => 10)
     followings.each do |f|
       if f.playlist_count > 0
-        playlists = client.get("/users/#{f.id}/playlists")
+        playlists = client.get("/users/#{f.id}/playlists", :limit => 4)
         playlists.each do |r|
           obj = {}
           obj["username"] = f.username

@@ -13,15 +13,17 @@
             #actions
               %ul
                 %li
+                  %a{:href => '/api/browse/spotify'} Add Spotify Playlists
+                %li
                   - if !current_user.has_service("rdio")
                     %a{:href => '/auth/rdio'} Connect with Rdio
                   - else
-                    %a{:href => '/auth/rdio'} Add Rdio playlists
+                    %a{:href => '/api/playlists'} Add Rdio playlists
                 %li
                   -if !current_user.has_service("soundcloud")
                     %a{:href => '/auth/soundcloud'} Connect with Soundcloud
                   - else
-                    %a{:href => '/auth/rdio'} Add Soundcloud playlists
+                    %a{:href => '/api/browse/soundcloud'} Add Soundcloud playlists
                 %li
                   -if !current_user.has_service("youtube")
                     %a{:href => '/auth/youtube'} Connect with YouTube
