@@ -14,5 +14,10 @@ class UsersController < ApplicationController
   def add_service
     current_user.add_service_with_omniauth(params[:provider])
   end
-
+  
+  def get_sc_followings_playlists
+    data = Playlist.get_sc_followings_playlists(current_user.id.to_s)
+    
+    render :json => data
+  end
 end
