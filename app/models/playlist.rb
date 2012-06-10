@@ -31,4 +31,23 @@ class Playlist
     return playlist_array
   end
   
+  def self.get_rdio_playlists(user_id)
+    user = User.find(user_id)
+    rdio_client ||= RdioApi.new(:consumer_key => ENV["RDIO_APP_KEY"], :consumer_secret => ENV["RDIO_APP_SECRET"], :access_token => user.get_auth('rdio').token)
+    rdio_client.getPlaylists(:user => 's72861')
+    
+    playlists.each do |r|
+      obj = {}
+      obj['name'] = r.name
+      obj['image_url'] = r.icon
+      obj['playlist_url'] = r.embedUrl
+      obj['source'] = 'rdio'
+      playlist_array << obj
+    end
+
+    
+    return playlist_array
+  end
+  
+  
 end
