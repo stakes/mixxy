@@ -45,7 +45,7 @@ class User
     self.services.where('provider' => service).exists? ? true : false
   end
   
-  def service_credentials(service)
+  def get_auth(service)
     s = self.services.where('provider' => service).first
   end
 
@@ -64,6 +64,5 @@ class User
   def youtube_id
     has_youtube ? youtube_auth.youtube_id : ""
   end
-
 end
 
