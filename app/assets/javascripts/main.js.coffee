@@ -7,6 +7,7 @@ $ ->
 
   $s = $('#big_search')
   $c = $('#container')
+  $gc = $('.item-grid-container')
   $tc = $('#tile-container')
   player = new Player()
   
@@ -74,6 +75,12 @@ $ ->
     isAnimated: true
   )
   
+  $gc.masonry(
+    itemSelector: '.item'
+    isFitWidth: true
+    columnWidth: 240
+  )
+  
   $s.submit((e) ->
     e.preventDefault()   
     $('.item', $tc).remove()
@@ -134,4 +141,19 @@ $ ->
         window.location.reload(true)
     )
   )
+  
+  # user tabs
+  
+
+  $('#user-tabs a:first').tab('show')
+  $('#user-tabs a').click((e) ->
+    e.preventDefault();
+    $(@).tab('show');
+    $gc.masonry(
+      itemSelector: '.item'
+      isFitWidth: true
+      columnWidth: 240
+    )
+  )
+
   

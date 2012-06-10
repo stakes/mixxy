@@ -1,55 +1,68 @@
 = render :partial => 'add_playlist_modal'
 .container
   .profile
-    .row
-      .span2
-        .user-image-container
-          .user-image
-            %img#profile-pic{:src => "http://graph.facebook.com/#{@user.uid}/picture?type=large"}
-      .span6
+    #user-card
+      .user-image-container
+        .user-image
+          %img#profile-pic{:src => "http://graph.facebook.com/#{@user.uid}/picture?type=large"}
+      .user-info-container
         %h1= @user.name
-      - if !current_user.blank?
-        - if current_user.id == @user.id
-          .span4
-            #actions
-              %ul
-                %li
-                  %a.add.spotify{:href => '/api/browse/spotify'} Add Spotify Playlists
-                %li
-                  - if !current_user.has_service("rdio")
-                    %a{:href => '/auth/rdio'} Connect with Rdio
-                  - else
-                    %a.add.rdio{:href => '/api/browse/rdio'} Add Rdio playlists
-                %li
-                  -if !current_user.has_service("soundcloud")
-                    %a{:href => '/auth/soundcloud'} Connect with Soundcloud
-                  - else
-                    %a.add.soundcloud{:href => '/api/browse/soundcloud'} Add Soundcloud playlists
-                %li
-                  -if !current_user.has_service("youtube")
-                    %a{:href => '/auth/youtube'} Connect with YouTube
-                  - else
-                    %a.add.youtube{:href => '/auth/rdio'} Add YouTube playlists
+    - if !current_user.blank?
+      - if current_user.id == @user.id
+        #actions
+          %ul
+            %li
+              %a.add.spotify{:href => '/api/browse/spotify'} Add Spotify Playlists
+            %li
+              - if !current_user.has_service("rdio")
+                %a{:href => '/auth/rdio'} Connect with Rdio
+              - else
+                %a.add.rdio{:href => '/api/browse/rdio'} Add Rdio playlists
+            %li
+              -if !current_user.has_service("soundcloud")
+                %a{:href => '/auth/soundcloud'} Connect with Soundcloud
+              - else
+                %a.add.soundcloud{:href => '/api/browse/soundcloud'} Add Soundcloud playlists
+            %li
+              -if !current_user.has_service("youtube")
+                %a{:href => '/auth/youtube'} Connect with YouTube
+              - else
+                %a.add.youtube{:href => '/auth/rdio'} Add YouTube playlists
 
-#container
+  %ul.nav.nav-tabs#user-tabs
+    %li.active
+      %a{:href => '#collection'}My Collection
+    %li
+      %a{:href => '#starred'}Starred Playlists
+  .clearfix
+
+
+#user-items-container
+
+
   #tile-container
   
-    - @playlists.each do |obj|
-      .item
-        .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
-          %p= obj['name']
-          %img{:src => obj['image_url']}
-          .controls
-            .source.ir{:class => obj['source']}= obj['source']
-            %a.like{:href => '/api/like'} Like
-        .back
+    .tab-content
   
-    - @likes.each do |obj|
-      .item
-        .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
-          %p= obj['name']
-          %img{:src => obj['image_url']}
-          .controls
-            .source.ir{:class => obj['source']}= obj['source']
-            %a.like{:href => '/api/like'} Like
-        .back
+      #collection.tab-pane.active
+        .item-grid-container
+          - @playlists.each do |obj|
+            .item
+              .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+                %p= obj['name']
+                %img{:src => obj['image_url']}
+                .controls
+                  .source.ir{:class => obj['source']}= obj['source']
+                  %a.like{:href => '/api/like'} Like
+            .back
+      #starred.tab-pane
+        .item-grid-container
+          - @likes.each do |obj|
+            .item
+              .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+                %p= obj['name']
+                %img{:src => obj['image_url']}
+                .controls
+                  .source.ir{:class => obj['source']}= obj['source']
+                  %a.like{:href => '/api/like'} Like
+              .back
