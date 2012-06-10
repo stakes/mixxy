@@ -103,12 +103,12 @@ $ ->
   $('#actions a.add').live('click', (e) ->
     e.preventDefault()
     console.log($(@).hasClass('soundcloud'))
-    obj = { source: 'soundcloud' }
+    obj = { source: $(@).attr('class').split(' ')[1] }
     $playlist_modal = $(ich.playlist_modal(obj))
     $playlist_modal.modal()
     $pl = $('#playlist-items')
     $.get(
-      '/api/browse/soundcloud'
+      $(@).attr('href')
       (data) -> 
         $pl.html('')
         _.each(data, (val, key) ->
