@@ -4,24 +4,25 @@
   #playlist-modal.modal
     .modal-header
       %button.close{:data => {:dismiss => 'modal'}, :type => 'button'} ×
-      %h3 Add {{source}} playlists
+      %h3 Add a {{source}} playlist to your collection
     .modal-body
-      %p Add a playlist from me or one of the people I follow
       \<div id="playlist-items" data-source="{{source}}">
       %img{:src => '/assets/throbber.gif'}
       \</div>
+    .modal-footer
       
 %script{:id => 'spotify_modal', :type => 'text/html'}
   #playlist-modal.modal
     .modal-header
       %button.close{:data => {:dismiss => 'modal'}, :type => 'button'} ×
-      %h3 Add {{source}} playlists
-    .modal-body
-      %form#spotify-form{:method => 'POST', :action => '/api/add/spotify'}
+      %h3 Add a {{source}} playlist to your collection
+    %form#spotify-form{:method => 'POST', :action => '/api/add/spotify'}
+    
+      .modal-body
         %label Spotify URI
         %input#uri-input{:type => 'text', :name => 'uri'}
         %label Name your playlist
         %input#title-input.span6{:type => 'text', :name => 'title'}
-        %br
-        %input.btn.btn-success{:type => 'submit'}
+      .modal-footer
+        %input.btn.btn-large.btn-info{:type => 'submit', :value => 'Add my playlist'}
         
