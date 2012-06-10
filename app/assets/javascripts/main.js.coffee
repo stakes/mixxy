@@ -92,7 +92,7 @@ $ ->
   $s.submit((e) ->
     e.preventDefault()   
     $('.item', $tc).remove()
-    
+    $('#container').append(ich.loading_results())
     $.post(
     
       '/api/blended_search'
@@ -100,6 +100,7 @@ $ ->
       (data) ->
         
         # console.log(data)
+        $('#container p').remove()
         _.each(data, (val, key) ->
           $i = ich.playlist_tile(val)
           $tc.prepend($i)

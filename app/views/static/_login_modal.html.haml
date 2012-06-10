@@ -1,4 +1,8 @@
 %script{:id => 'login_modal', :type => 'text/html'}
   #login-modal.modal
     .modal-body
-      %a{:href => '/auth/facebook'} Do it bro
+      %h2 Sign in with Facebook
+      %p Find and share new music, and build your playlist collection.
+      %span
+        %p We'll save all of your favorites for you to listen to anytime, but you need to be logged in to start saving people's playlists.
+      %a.ir#facebook-login{:href => '/auth/facebook'} Do it bro

@@ -1,3 +1,4 @@
+= render :partial => 'static/loading_results'
 #form-container
     .container
         .row
@@ -5,7 +6,7 @@
                 .span7.offset1
                     = text_field_tag(:query, '', :placeholder => 'I want to listen to...')
                 .span3 
-                    = submit_tag('Find playlists', :id => 'search_submit')
+                    = submit_tag('Find playlists', :id => 'search_submit', :class => 'btn')
 
 #container
     #tile-container
