@@ -23,11 +23,13 @@ $ ->
         $(@).find('.front').children().fadeIn()
     )
     p = $(@).parent()
+    w = 436
+    w = 680 if p.attr('data-source') == 'youtube'
     $pt = p.parent()
     $pt.addClass('flip')
     $pt.animate(
       {
-        width: 436
+        width: w
         height: 480
       }
       750
@@ -37,6 +39,7 @@ $ ->
     player.destroy()
     setTimeout(
       () ->
+        console.log(p.attr('data-source'))
         player.loadPlayer($pt.find('.back'), p.attr('data-source'), p.attr('data-url'))
       2000
     )

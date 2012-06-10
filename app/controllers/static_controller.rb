@@ -26,7 +26,7 @@ class StaticController < ApplicationController
       feed['feed']['entry'].each do |entry| 
         response << {
           'source' => 'youtube',
-          'playlist-url' => entry['link'][entry['link'].index {|l| l['rel']=='self'}]['href'],
+          'playlist_url' => entry['yt:playlistId'],
           'name' => entry['title'],
           'image_url' => entry['media:group']['media:thumbnail'][2]['url']
           # 'username' => youtube_username
