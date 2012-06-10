@@ -19,7 +19,7 @@
                   - if !current_user.has_service("rdio")
                     %a{:href => '/auth/rdio'} Connect with Rdio
                   - else
-                    %a.add.rdio{:href => '/api/playlists'} Add Rdio playlists
+                    %a.add.rdio{:href => '/api/browse/rdio'} Add Rdio playlists
                 %li
                   -if !current_user.has_service("soundcloud")
                     %a{:href => '/auth/soundcloud'} Connect with Soundcloud
