@@ -33,10 +33,11 @@ button, input {
 #container {
   margin: 0 auto;
   z-index: 500;
+  margin-top: 22px;
 }
 
 #playlist-grid {
-  margin: 22px auto 0;
+  margin: auto 0;
 }
 
 #player {
@@ -62,8 +63,8 @@ button, input {
     line-height: 32px;
     height: 48px;
     width: 100%;
-    @include border-left-radius(3px);
-    @include border-right-radius(0);
+//    @include border-left-radius(3px);
+//    @include border-right-radius(0);
     @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
   }
   input[type="submit"] {
@@ -76,14 +77,19 @@ button, input {
     background-color: #BDD630;
     @include box-shadow(none);
     line-height: 44px;
-    @include border-top-left-radius(0);
-    @include border-top-right-radius(3px);
-    @include border-bottom-left-radius(0);
-    @include border-bottom-right-radius(3px);
+//    @include border-top-left-radius(0);
+//    @include border-top-right-radius(3px);
+//    @include border-bottom-left-radius(0);
+//    @include border-bottom-right-radius(3px);
     @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+    
+    &:hover {
+     background-color: #afce00; 
+    }
+    
   }
   .span3 {
-    margin-left: 10px;
+//    margin-left: 10px;
   }
 }
 

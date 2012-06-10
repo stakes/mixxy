@@ -46,14 +46,7 @@
     /       = render 'layouts/navigation'
           
           
-    #form-container
-      .container
-        .row
-          = form_tag('/search', :method => 'get', :id => 'big_search') do
-            .span7.offset1
-              = text_field_tag(:query)
-            .span3 
-              = submit_tag('Find playlists', :id => 'search_submit')
+
           
     #main{:role => "main"}
       .container
