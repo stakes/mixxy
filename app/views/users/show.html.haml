@@ -17,24 +17,26 @@
     - if !current_user.blank?
       - if current_user.id == @user.id
         #actions
+          %h3 Add playlists to your collection
           %ul
             %li
-              %a.add.spotify{:href => '/api/browse/spotify'} Add Spotify Playlists
+              %a.add.spotify{:href => '/api/browse/spotify'}
             %li
               - if !current_user.has_service("rdio")
-                %a{:href => '/auth/rdio'} Connect with Rdio
+                %a.add.rdio{:href => '/auth/rdio'}
               - else
-                %a.add.rdio{:href => '/api/browse/rdio'} Add Rdio playlists
+                %a.add.rdio{:href => '/api/browse/rdio'}
+            .clearfix
             %li
               -if !current_user.has_service("soundcloud")
-                %a{:href => '/auth/soundcloud'} Connect with Soundcloud
+                %a.add.soundcloud{:href => '/auth/soundcloud'}
               - else
-                %a.add.soundcloud{:href => '/api/browse/soundcloud'} Add Soundcloud playlists
+                %a.add.soundcloud{:href => '/api/browse/soundcloud'}
             %li
               -if !current_user.has_service("youtube")
-                %a{:href => '/auth/youtube'} Connect with YouTube
+                %a.add.youtube{:href => '/auth/youtube'}
               - else
-                %a.add.youtube{:href => '/auth/rdio'} Add YouTube playlists
+                %a.add.youtube{:href => '/auth/rdio'}
 
   %ul.nav.nav-tabs#user-tabs
     %li.active
