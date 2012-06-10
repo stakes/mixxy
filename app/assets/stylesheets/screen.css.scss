@@ -287,6 +287,42 @@ p.empty-list-state {
   float: left;
 }
 
+.stats-container div {
+  float: left;
+  height: 50px;
+  background-position: 0 4px;
+  color: #6b6b6b;
+  margin-top: 44px;
+  h2 {
+    font-size: 28px;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+  
+  &.playlists {
+    background-image: url('/assets/playlist-icon.png');
+    background-repeat: no-repeat;
+    padding-left: 64px;
+  }
+  &.starred {
+    margin-left: 24px;
+    background-image: url('/assets/starred-icon.png');
+    background-repeat: no-repeat;
+    padding-left: 50px;
+  }
+  
+  span {
+    display: block;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 6px;
+    color: #959595;
+  }
+}
+
 .profile {
   height: 160px;
   margin-top: 24px;

@@ -7,6 +7,13 @@
           %img#profile-pic{:src => "http://graph.facebook.com/#{@user.uid}/picture?type=large"}
       .user-info-container
         %h1= @user.name
+        .stats-container
+          .stat.playlists
+            %h2= @playlists.count
+            %span Playlists
+          .stat.starred
+            %h2= @likes.count
+            %span Starred
     - if !current_user.blank?
       - if current_user.id == @user.id
         #actions
