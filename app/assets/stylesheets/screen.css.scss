@@ -10,7 +10,7 @@
 
 html, body {
   height: 100%;
-  background-color: #b7ddec;
+  background-color: #2b434f;
   background-image: url('/assets/bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ button, input {
 .content {
   background-color: #eee;
   padding: 20px;
-  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  margin: 0 -20px; /* negative indent the   amount of the padding to maintain the grid system */
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
@@ -46,8 +46,62 @@ button, input {
   margin-top: 22px;
 }
 
+#login-modal {
+  p, h2, a, span {
+    text-align: center;
+    margin: 0 auto;
+  }
+  span p {
+    margin: 18px auto;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: normal;
+    width: 380px;
+  }
+  h2 {
+    font-size: 28px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 21px;
+  }
+  a {
+    margin-top: 23px;
+    background-image: url('fb-signin-btn.png');
+    background-repeat: no-repeat;
+    width: 217px;
+    height: 61px;
+    display: block;
+    background-position: 0 0;
+  }
+  a:hover {
+    background-position: 0 -62px;
+  }
+}
+
 p.empty-list-state {
+  img {
+    display: block;
+    margin-bottom: 24px;
+  }
   font-size: 40px;
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  color: #aaa;
+  font-weight: 300;
+  margin-bottom: 120px;
+}
+
+p.loading-state {
+  img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  font-size: 24px;
   text-align: center;
   width: 500px;
   margin: 0 auto;
@@ -62,7 +116,7 @@ p.empty-list-state {
   background-color: #fff;
   padding-bottom: 44px;
   @include box-shadow(rgba(0,0,0,.75) 0 1px 5px);
-  border-top: 4px solid #444;
+  border-top: 4px solid #000;
 }
 
 #player {
@@ -84,34 +138,24 @@ p.empty-list-state {
   position: relative;
   padding: 12px 0 10px;
   margin-bottom: 44px;
+  border-bottom: 1px solid #ccc;
   input[type="text"] {
     font-size: 28px;
     line-height: 32px;
     height: 48px;
     width: 100%;
-//    @include border-left-radius(3px);
-//    @include border-right-radius(0);
     @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+    padding-left: 12px;
+    padding-right: 0;
   }
   input[type="submit"] {
     height: 58px;
     width: 100%;
-    font-family: "ratio-1","ratio-2",sans-serif;
-    font-weight: 100;
-    text-shadow: 0 1px 0 rgba(255,255,255,.25);
-    font-size: 22px;
-    background-color: #BDD630;
+    font-weight: normal;
+    text-shadow: 0 1px 0 rgba(255,255,255,1);
+    font-size: 18px;
     @include box-shadow(none);
     line-height: 44px;
-//    @include border-top-left-radius(0);
-//    @include border-top-right-radius(3px);
-//    @include border-bottom-left-radius(0);
-//    @include border-bottom-right-radius(3px);
-    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
-    
-    &:hover {
-     background-color: #afce00; 
-    }
     
   }
   .span3 {
@@ -133,18 +177,55 @@ p.empty-list-state {
   }
   .right {
     float: right;
+    a:hover {
+     span {
+       text-decoration: underline; 
+      }
+    }
+    a#signout {
+      margin-top: 6px;
+      float: right;
+      text-align: right;
+      color: #fff;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+    p {
+      margin-top: 16px;
+      vertical-align: baseline;
+      clear: both;
+      img {
+        float: left;
+        margin-top: 0;
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        border: 2px solid #fff;
+        @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+      }
+      span {
+        float: left;
+        margin-top: 8px;
+        margin-left: 6px;
+      }
+      a {
+        color: #fff;
+        font-weight: bold;
+      }
+    }
   }
   a#header-signin, a#header-signin:hover, a#header-signin:active, a#header-signin:visited {
-    margin-top: 20px;
+    margin-top: 23px;
     background-image: url('fb-header-btn.png');
     background-repeat: no-repeat;
     width: 217px;
-    height: 60px;
+    height: 61px;
     display: block;
     background-position: 0 0;
   }
   a#header-signin:hover {
-    background-position: 0 -61px;
+    background-position: 0 -62px;
   }
 }
 
@@ -154,6 +235,21 @@ p.empty-list-state {
   margin-bottom: 10px;
   padding: 4px;
   position: relative;
+  
+  a.like {
+    height: 22px;
+    width: 24px;
+    background-image: url('/assets/star-icon.png');
+    background-repeat: no-repeat;
+    &:hover {
+      background-position: 0 -24px;
+    }
+    &.liked {
+      background-position: 0 -24px;
+      cursor: pointer;
+    }
+  }
+  
   
   img {
     width: 200px;
@@ -226,15 +322,51 @@ p.empty-list-state {
 
 
 
+
 #user-card {
   float: left;
 }
 #actions {
   float: right;
-  background-color: #ffface;
-  border: 1px solid #e3d344;
-  width: 320px;
+  width: 300px;
   height: 170px;
+  margin-top: 14px;
+  h3 {
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 16px;
+  }
+  a.add {
+    display: inline-block;
+    width: 138px;
+    height: 50px;
+    background-repeat: no-repeat;
+    &.youtube {
+      background-image: url('/assets/add-youtube.png');
+      float: left;
+      margin-right: 12px;
+      margin-top: 12px;
+    }
+    &.spotify {
+      background-image: url('/assets/add-spotify.png');
+      float: left;
+    }
+    &.rdio {
+      background-image: url('/assets/add-rdio.png');
+      float: left;
+      margin-left: 12px;
+    }
+    &.soundcloud {
+      background-image: url('/assets/add-soundcloud.png');
+      float: left;
+      margin-right: 12px;
+      margin-top: 12px;
+    }
+  }
+  a.add:hover {
+    background-position: 0 -54px;
+  }
 }
 
 .user-image-container {
@@ -248,6 +380,42 @@ p.empty-list-state {
 
 .user-info-container {
   float: left;
+}
+
+.stats-container div {
+  float: left;
+  height: 50px;
+  background-position: 0 4px;
+  color: #6b6b6b;
+  margin-top: 44px;
+  h2 {
+    font-size: 28px;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+  
+  &.playlists {
+    background-image: url('/assets/playlist-icon.png');
+    background-repeat: no-repeat;
+    padding-left: 64px;
+  }
+  &.starred {
+    margin-left: 24px;
+    background-image: url('/assets/starred-icon.png');
+    background-repeat: no-repeat;
+    padding-left: 50px;
+  }
+  
+  span {
+    display: block;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 6px;
+    color: #959595;
+  }
 }
 
 .profile {

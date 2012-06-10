@@ -56,6 +56,7 @@ $ ->
   $('.item a.like').live('click', (e) ->
     e.preventDefault()
     if window.MIXXY.current_user?
+      e.addClass('liked')
       $.post(
         '/api/like'
         {
@@ -85,12 +86,13 @@ $ ->
     itemSelector: '.item'
     isFitWidth: true
     columnWidth: 240
+    isAnimated: true
   )
   
   $s.submit((e) ->
     e.preventDefault()   
     $('.item', $tc).remove()
-    
+    $('#container').append(ich.loading_results())
     $.post(
     
       '/api/blended_search'
@@ -98,6 +100,7 @@ $ ->
       (data) ->
         
         # console.log(data)
+        $('#container p').remove()
         _.each(data, (val, key) ->
           $i = ich.playlist_tile(val)
           $tc.prepend($i)
@@ -113,22 +116,45 @@ $ ->
   
   $playlist_modal = null
   
-  $('#actions a.add').live('click', (e) ->
+  $('#actions a.enabled').live('click', (e) ->
     e.preventDefault()
-    console.log($(@).hasClass('soundcloud'))
-    obj = { source: $(@).attr('class').split(' ')[1] }
-    $playlist_modal = $(ich.playlist_modal(obj))
-    $playlist_modal.modal()
-    $pl = $('#playlist-items')
-    $.get(
-      $(@).attr('href')
-      (data) -> 
-        $pl.html('')
-        _.each(data, (val, key) ->
-          $l = ich.playlist_list_item(val)
-          $pl.prepend($l)
+    s = $(@).attr('class').split(' ')[2]
+    obj = { source: s }
+    
+    if s == 'spotify'
+      $playlist_modal = $(ich.spotify_modal(obj))
+      $playlist_modal.modal()
+      $('#spotify-form').bind('submit', (e) ->
+        e.preventDefault()
+        console.log($(@).find('#uri-input').val())
+        console.log($(@).find('#title-input').val())
+        $.post(
+          '/api/add/spotify'
+          {
+            source: 'spotify'
+            url: $(@).find('#uri-input').val()
+            image_url: '/assets/default-spotify.png'
+            name: $(@).find('#title-input').val()
+          }
+          (data) ->
+            # TODO: visual feedback on add
+
+            window.location.reload(true)
         )
-    )    
+      )
+    else
+      $playlist_modal = $(ich.playlist_modal(obj))
+      $playlist_modal.modal()
+      $pl = $('#playlist-items')
+      $.get(
+        $(@).attr('href')
+        (data) -> 
+          $pl.html('')
+          _.each(data, (val, key) ->
+            $l = ich.playlist_list_item(val)
+            $pl.prepend($l)
+          )
+      )    
   )
   $('#playlist-items .list-item').live('click', (e) ->
     e.preventDefault()

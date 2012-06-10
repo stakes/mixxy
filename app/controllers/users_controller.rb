@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
-  before_filter :get_rdio_client
+  before_filter :get_rdio_client, :only => :get_rdio_playlists
 
   def index
     @users = User.all
@@ -40,6 +40,11 @@ class UsersController < ApplicationController
   
   def get_rdio_playlists
     data = Playlist.get_rdio_playlists(@rdio_client)
+    render :json => data
+  end
+  
+  def get_youtube_playlists
+    data = current_user.youtube_playlists
     render :json => data
   end
   

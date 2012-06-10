@@ -1,9 +1,4 @@
 = render :partial => 'playlists/soundcloud_widget'
 = render :partial => 'playlists/rdio_widget'
 = render :partial => 'playlists/youtube_widget'
-
-
-%script{:id => 'player_widget', :type => 'text/html'}
-    %h1 PLAYER!
-    %h2 {{source}}
-    %h3 {{url}}
+= render :partial => 'playlists/spotify_widget'
