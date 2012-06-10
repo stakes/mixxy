@@ -32,11 +32,13 @@ class Playlist
     return playlist_array
   end
   
-  def self.get_rdio_playlists(user_id)
-    user = User.find(user_id)
-    rdio_client ||= RdioApi.new(:consumer_key => ENV["RDIO_APP_KEY"], :consumer_secret => ENV["RDIO_APP_SECRET"], :access_token => user.get_auth('rdio').token)
-    rdio_client.getPlaylists(:user => 's72861')
+  def self.get_rdio_playlists(rdio_client)
     
+    logger.info rdio_client.getPlaylists(:user => 's72861')
+    playlists = rdio_client.getPlaylists(:user => 's72861')
+    logger.info rdio_client.currentUser
+    playlists = playlists.collab + playlists.owned + playlists.subscribed
+    playlist_array = []
     playlists.each do |r|
       obj = {}
       obj['name'] = r.name
