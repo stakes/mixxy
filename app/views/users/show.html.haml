@@ -1,5 +1,8 @@
 .container
   .profile-card
+  
+    .user-image
+      %img{:src => "http://graph.facebook.com/#{@user.uid}/picture?type=large"}
     %h1= @user.name
     %ul
       -if !current_user.has_service("rdio")
