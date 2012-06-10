@@ -12,7 +12,7 @@
         - @playlists.each do |obj|
             .item{:data => {:source => obj['source'], :url => obj['playlist_url']}}
                 %p= obj['name']
-                .controls
-                    .source= obj['source']
-                    %a.like{:href => '/api/like'} Like
                 %img{:src => obj['image_url']}
+                .controls
+                    .source.ir{:class => obj['source']}= obj['source']
+                    %a.like{:href => '/api/like'} Like

@@ -123,8 +123,8 @@ button, input {
 }
 
 .item {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 226px;
   padding: 4px;
   margin: 10px;
   background-color: #eaebeb;
@@ -135,7 +135,7 @@ button, input {
     
     position: absolute;
     display: inline-block;
-    max-width: 172px;
+    max-width: 192px;
     padding: 4px;
     background-color: rgba(0,0,0,.7);
     line-height: 24px;
@@ -149,20 +149,42 @@ button, input {
   }
   
   .controls {
-    
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+    .source {
+      float: left;
+      width: 22px;
+      height: 22px;
+      &.rdio {
+        background-image: url('rdio-small.png');
+      }
+      &.soundcloud {
+        background-image: url('soundcloud-small.png');
+      }
+      &.spotify {
+        background-image: url('spotify-small.png');
+      }
+      &.youtube {
+        background-image: url('youtube-small.png');
+      }
+    }
+    a {
+      float: right;
+    }
   
   }
   
   .playlist-image {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
   
 }
 
+.profile-card {
+  height: 200px;
+}
+
 #footer {
-  height: 160px;
+  height: 240px;
+  margin-top: 120px;
+  background-color: #ccc;
 }

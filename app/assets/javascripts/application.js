@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require underscore
+//= require main.js
 //= require_tree .
-
-

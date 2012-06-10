@@ -1,19 +1,21 @@
-%h1= @user.name
-%ul
-  -if !current_user.has_service("rdio")
-    %a{:href => '/auth/rdio'} ADD RDIO!
-  -if !current_user.has_service("soundcloud")
-    %a{:href => '/auth/soundcloud'} ADD Soundcloud!
-  -if !current_user.has_service("youtube")
-    %a{:href => '/auth/youtube'} ADD YouTube!
-    
+.container
+  .profile-card
+    %h1= @user.name
+    %ul
+      -if !current_user.has_service("rdio")
+        %a{:href => '/auth/rdio'} ADD RDIO!
+      -if !current_user.has_service("soundcloud")
+        %a{:href => '/auth/soundcloud'} ADD Soundcloud!
+      -if !current_user.has_service("youtube")
+        %a{:href => '/auth/youtube'} ADD YouTube!
 
 #container
   #tile-container
+  
     - @likes.each do |obj|
       .item{:data => {:source => obj['source'], :url => obj['playlist_url']}}
         %p= obj['name']
-        .controls
-          .source= obj['source']
-          %a.like{:href => '/api/like'} Like
         %img{:src => obj['image_url']}
+        .controls
+          .source.ir{:class => obj['source']}= obj['source']
+          %a.like{:href => '/api/like'} Like
