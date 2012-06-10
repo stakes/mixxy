@@ -62,7 +62,7 @@ class User
   end
   
   def youtube_id
-    has_youtube ? youtube.auth.youtube_id : ""
+    has_youtube ? youtube_auth.youtube_id : ""
   end
 
 end
