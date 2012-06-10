@@ -42,7 +42,7 @@ class User
   end    
   
   def has_service(service)
-    self.services.where('provider' => service).count == 0 ? false : true
+    self.services.where('provider' => service).exists? ? true : false
   end
   
   def service_credentials(service)
