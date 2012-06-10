@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     if auth['provider'] == 'facebook'
       user = User.where(:provider => auth['provider'], 
                         :uid => auth['uid']).first || User.create_with_omniauth(auth)
+      user.add_service_with_omniauth(auth['provider'], auth['credentials']['token'], auth['credentials']['secret'])
       session[:user_id] = user.id
       redirect_to root_url, :notice => 'Signed in!'
     else
