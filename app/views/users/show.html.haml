@@ -14,6 +14,7 @@
           .stat.starred
             %h2= @likes.count
             %span Starred
+
     - if !current_user.blank?
       - if current_user.id == @user.id
         #actions
@@ -36,7 +37,7 @@
               -if !current_user.has_service("youtube")
                 %a.add.youtube{:href => '/auth/youtube'}
               - else
-                %a.add.youtube{:href => '/auth/rdio'}
+                %a.add.youtube{:href => '/api/browse/youtube'}
 
   %ul.nav.nav-tabs#user-tabs
     %li.active
@@ -47,7 +48,6 @@
 
 
 #user-items-container
-
 
   #tile-container
   
