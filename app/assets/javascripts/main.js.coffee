@@ -44,6 +44,8 @@ $ ->
     player.destroy()
     setTimeout(
       () ->
+        console.log($pt)
+        console.log($pt.find('.back'))
         player.loadPlayer($pt.find('.back'), p.attr('data-source'), p.attr('data-url'))
       2000
     )
