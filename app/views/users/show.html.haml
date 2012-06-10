@@ -1,19 +1,40 @@
-%h1= @user.name
-%ul
-  -if !current_user.has_service("rdio")
-    %a{:href => '/auth/rdio'} ADD RDIO!
-  -if !current_user.has_service("soundcloud")
-    %a{:href => '/auth/soundcloud'} ADD Soundcloud!
-  -if !current_user.has_service("youtube")
-    %a{:href => '/auth/youtube'} ADD YouTube!
-    
+.container
+  .profile
+    .row
+      .span2
+        .user-image-container
+          .user-image
+            %img#profile-pic{:src => "http://graph.facebook.com/#{@user.uid}/picture?type=large"}
+      .span6
+        %h1= @user.name
+      - if !current_user.blank?
+        - if current_user.id == @user.id
+          .span4
+            #actions
+              %ul
+                %li
+                  - if !current_user.has_service("rdio")
+                    %a{:href => '/auth/rdio'} Connect with Rdio
+                  - else
+                    %a{:href => '/auth/rdio'} Add Rdio playlists
+                %li
+                  -if !current_user.has_service("soundcloud")
+                    %a{:href => '/auth/soundcloud'} Connect with Soundcloud
+                  - else
+                    %a{:href => '/auth/rdio'} Add Soundcloud playlists
+                %li
+                  -if !current_user.has_service("youtube")
+                    %a{:href => '/auth/youtube'} Connect with YouTube
+                  - else
+                    %a{:href => '/auth/rdio'} Add YouTube playlists
 
 #container
   #tile-container
+  
     - @likes.each do |obj|
       .item{:data => {:source => obj['source'], :url => obj['url']}}
         %p= obj['name']
-        .controls
-          .source= obj['source']
-          %a.like{:href => '/api/like'} Like
         %img{:src => obj['image_url']}
+        .controls
+          .source.ir{:class => obj['source']}= obj['source']
+          %a.like{:href => '/api/like'} Like

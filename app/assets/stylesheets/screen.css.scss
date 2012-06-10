@@ -14,7 +14,7 @@ html, body {
 
 html, body, p,
 button, input {
-  font-family: "adelle-1","adelle-2";
+  font-family: "ratio-1","ratio-2",sans-serif;
   font-weight: 300;
 }
 
@@ -123,19 +123,24 @@ button, input {
 }
 
 .item {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 226px;
   padding: 4px;
   margin: 10px;
   background-color: #eaebeb;
   @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
   position: relative;
   
+  img {
+    width: 200px;
+    height: 200px;
+  }
+  
   p {
     
     position: absolute;
     display: inline-block;
-    max-width: 172px;
+    max-width: 192px;
     padding: 4px;
     background-color: rgba(0,0,0,.7);
     line-height: 24px;
@@ -149,20 +154,63 @@ button, input {
   }
   
   .controls {
-    
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+    .source {
+      float: left;
+      width: 22px;
+      height: 22px;
+      &.rdio {
+        background-image: url('rdio-small.png');
+      }
+      &.soundcloud {
+        background-image: url('soundcloud-small.png');
+      }
+      &.spotify {
+        background-image: url('spotify-small.png');
+      }
+      &.youtube {
+        background-image: url('youtube-small.png');
+      }
+    }
+    a {
+      float: right;
+    }
   
   }
   
   .playlist-image {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
   
 }
 
-#footer {
+.profile {
   height: 160px;
+  margin-top: 24px;
+  h1 {
+    margin-top: 18px;
+    font-size: 36px;
+  }
+}
+
+.user-image-container {
+  padding: 10px;
+  background-color: #eee;
+  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+}
+
+.user-image{
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  img {
+    display: block;
+  }
+}
+
+#footer {
+  height: 240px;
+  margin-top: 120px;
+  background-color: #ccc;
 }
