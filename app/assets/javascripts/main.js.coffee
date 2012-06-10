@@ -15,22 +15,22 @@ $ ->
     $('.item.flip .front').children().hide()
     $('.item.flip').removeClass('flip').animate(
       {
-        width: 200
-        height: 226
+        width: 220
+        height: 260
       }
       750
       () ->
         $(@).find('.front').children().fadeIn()
     )
     p = $(@).parent()
-    w = 436
-    w = 680 if p.attr('data-source') == 'youtube'
+    w = 460
+    w = 700 if p.attr('data-source') == 'youtube'
     $pt = p.parent()
     $pt.addClass('flip')
     $pt.animate(
       {
         width: w
-        height: 480
+        height: 538 
       }
       750
       () ->
@@ -66,14 +66,13 @@ $ ->
       $m.modal()
     
   )
-  
-  $c.imagesLoaded () ->
-    $c.masonry(
-      itemSelector: '.item'
-      isFitWidth: true
-      columnWidth: 240
-      isAnimated: true
-    )
+
+  $c.masonry(
+    itemSelector: '.item'
+    isFitWidth: true
+    columnWidth: 240
+    isAnimated: true
+  )
   
   $s.submit((e) ->
     e.preventDefault()   
