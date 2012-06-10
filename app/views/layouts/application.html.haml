@@ -31,10 +31,15 @@
           = link_to(image_tag('logo.png'), '/')
         .right
           - if user_signed_in?
-            %li
-              Logged in as #{link_to current_user.name, '/me'}
-            %li
-              = link_to('Logout', signout_path)
+            = link_to('Log out', signout_path, :id => 'signout')
+            .clearfix
+            .user-login
+              
+            %p 
+              %a{:href => '/me'}
+                %img{:src => "http://graph.facebook.com/#{current_user.uid}/picture?type=square"}
+                %span= current_user.name
+              
           - else
             = link_to('Sign up with Facebook', signin_path, :id => 'header-signin', :class => 'ir')
         .clearfix
