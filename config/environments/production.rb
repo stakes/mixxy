@@ -80,7 +80,7 @@ Mixxy::Application.configure do
   }
 
   
-  ENV["FACEBOOK_APP_ID"] = '380684265312885'
+  ENV["FACEBOOK_APP_KEY"] = '380684265312885'
   ENV["FACEBOOK_APP_SECRET"] = 'ceaceb4568d747e60ed33a818d16bdcf'
   
   ENV["RDIO_APP_KEY"] = 'annhyg8fhmx2dmv3anuwd4c6'
