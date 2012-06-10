@@ -7,6 +7,7 @@ class User
   field :likes, :type => Array, :default => []
   attr_accessible :provider, :uid, :name, :email
   embeds_many :services
+  include YTPlaylistImporter
   has_and_belongs_to_many :playlists
 
   def self.create_with_omniauth(auth)
@@ -20,6 +21,12 @@ class User
     end
   end
   
+  def add_service_with_omniauth(provider, token, secret, yt_id=nil)
+    ytid = yt_id.present? ? yt_id.split('/')[-1] : nil
+    self.services.build(provider: provider, token: token, secret:secret, youtube_id:ytid) if !self.has_service(provider)
+    self.save
+  end
+
   def has_playlist(url)
     self.playlists.where('url' => url).count == 0 ? false : true
   end
@@ -32,15 +39,10 @@ class User
     self.likes << p.id if !self.likes.include?(p.id)
     self.save
     
-  end
-  
-  def add_service_with_omniauth(provider, token, secret)
-    self.services.build(provider: provider, token: token, secret: secret) if !self.has_service(provider)
-    self.save
-  end
+  end    
   
   def has_service(service)
-    self.services.where('provider' => service).count == 0 ? false : true
+    self.services.where('provider' => service).exists? ? true : false
   end
   
   def service_credentials(service)
@@ -48,7 +50,19 @@ class User
   end
 
   def has_soundcloud
-    self.services.where('provider' => 'soundcloud').count == 0 ? false : true
+    self.services.where('provider' => 'soundcloud').exists? ? true : false
+  end
+  
+  def has_youtube
+    self.services.where(provider:'youtube').exists? ? true : false
+  end
+  
+  def youtube_auth 
+    self.has_youtube ? self.services.where(provider:'youtube').first : nil
+  end
+  
+  def youtube_id
+    has_youtube ? youtube_auth.youtube_id : ""
   end
 
 end

@@ -3,7 +3,8 @@ class ServicesController < ApplicationController
   end
   
   def create
-    render :text => request.env["omniauth.auth"].to_yaml
+    omniauth = request.env["omniauth.auth"]      
+    render :text => omniauth.to_yaml
   end
   
   def destroy
