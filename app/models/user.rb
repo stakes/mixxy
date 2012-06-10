@@ -23,7 +23,7 @@ class User
   
   def add_service_with_omniauth(provider, token, secret, yt_id=nil)
     ytid = yt_id.present? ? yt_id.split('/')[-1] : nil
-    self.services.build(provider: provider, token: token, secret:ytid) if !self.has_service(provider)
+    self.services.build(provider: provider, token: token, secret:secret, youtube_id:ytid) if !self.has_service(provider)
     self.save
   end
 
