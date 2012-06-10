@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
-  before_filter :get_rdio_client
+  before_filter :get_rdio_client, :only => :get_rdio_playlists
 
   def index
     @users = User.all
