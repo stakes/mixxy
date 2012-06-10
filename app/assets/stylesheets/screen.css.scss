@@ -1,0 +1,162 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass";
+
+.ir { border:0; font: 0/0 a; text-shadow: none; color: transparent; background-color: transparent; }
+
+html, body {
+  height: 100%;
+}
+
+html, body, p,
+button, input {
+  font-family: "adelle-1","adelle-2";
+  font-weight: 300;
+}
+
+.content {
+  background-color: #eee;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+#container {
+  margin: 0 auto;
+  z-index: 500;
+}
+
+#playlist-grid {
+  margin: 22px auto 0;
+}
+
+#player {
+  @include box-shadow(inset rgba(0,0,0,.4) 0 1px 3px);
+  background-color: #fff;
+  position: fixed;
+  right: 0;
+  top: 100px;
+  height: 100%;
+  width: 240px;
+  z-index: 950;
+  display: none;
+}
+
+#form-container {
+  height: 60px;
+  background-color: #ddd;
+  z-index: 900;
+  position: relative;
+  padding: 12px 0 10px;
+  input[type="text"] {
+    font-size: 28px;
+    line-height: 32px;
+    height: 48px;
+    width: 100%;
+    @include border-left-radius(3px);
+    @include border-right-radius(0);
+    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+  }
+  input[type="submit"] {
+    height: 58px;
+    width: 100%;
+    font-family: "ratio-1","ratio-2",sans-serif;
+    font-weight: 100;
+    text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    font-size: 22px;
+    background-color: #BDD630;
+    @include box-shadow(none);
+    line-height: 44px;
+    @include border-top-left-radius(0);
+    @include border-top-right-radius(3px);
+    @include border-bottom-left-radius(0);
+    @include border-bottom-right-radius(3px);
+    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+  }
+  .span3 {
+    margin-left: 10px;
+  }
+}
+
+#abovenav {
+  height: 100px;
+  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+  z-index: 999;
+  position: relative;
+  background-color: #eee;
+  a img {
+    margin-top: 15px;
+  }
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+  a#header-signin, a#header-signin:hover, a#header-signin:active, a#header-signin:visited {
+    margin-top: 20px;
+    background-image: url('fb-header-btn.png');
+    background-repeat: no-repeat;
+    width: 217px;
+    height: 60px;
+    display: block;
+    background-position: 0 0;
+  }
+  a#header-signin:hover {
+    background-position: 0 -61px;
+  }
+}
+
+.item {
+  width: 180px;
+  height: 180px;
+  padding: 4px;
+  margin: 10px;
+  background-color: #eaebeb;
+  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+  position: relative;
+  
+  p {
+    
+    position: absolute;
+    display: inline-block;
+    max-width: 172px;
+    padding: 4px;
+    background-color: rgba(0,0,0,.7);
+    line-height: 24px;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 0 1px 0 #000;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    
+  }
+  
+  .controls {
+    
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  
+  }
+  
+  .playlist-image {
+    width: 180px;
+    height: 180px;
+  }
+  
+}
+
+#footer {
+  height: 160px;
+}
