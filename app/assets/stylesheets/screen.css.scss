@@ -127,8 +127,6 @@ button, input {
   height: 226px;
   padding: 4px;
   margin: 10px;
-  background-color: #eaebeb;
-  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
   position: relative;
   
   img {
@@ -227,4 +225,83 @@ button, input {
   height: 240px;
   margin-top: 120px;
   background-color: #ccc;
+}
+
+// Face-smashing 3d transforms
+.item {
+	font-size: .8em;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+}
+/* -- make sure to declare a default for every property that you want animated -- */
+/* -- general styles, including Y axis rotation -- */
+.item .front {
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 900;
+	width: inherit;
+	height: inherit;
+	
+	background-color: #eaebeb;
+  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+	
+	-webkit-transform: rotateY(0deg);
+	-webkit-transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+
+	-moz-transform: rotateY(0deg);
+	-moz-transform-style: preserve-3d;
+	-moz-backface-visibility: hidden;
+
+	/* -- transition is the magic sauce for animation -- */
+	-o-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+.item.flip .front {
+	z-index: 900;
+
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+
+}
+
+.item .back {
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 800;
+	width: inherit;
+	height: inherit;
+	
+	-webkit-transform: rotateY(-180deg);
+	-webkit-transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+
+	-moz-transform: rotateY(-180deg);
+	-moz-transform-style: preserve-3d;
+	-moz-backface-visibility: hidden;
+
+	/* -- transition is the magic sauce for animation -- */
+	-o-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	
+	background-color: #eaebeb;
+  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+}
+
+.item.flip .back {
+	z-index: 1000;
+	
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+
 }
