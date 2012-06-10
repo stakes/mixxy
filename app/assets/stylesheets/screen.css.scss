@@ -14,7 +14,7 @@ html, body {
 
 html, body, p,
 button, input {
-  font-family: "adelle-1","adelle-2";
+  font-family: "ratio-1","ratio-2",sans-serif;
   font-weight: 300;
 }
 
@@ -131,6 +131,11 @@ button, input {
   @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
   position: relative;
   
+  img {
+    width: 200px;
+    height: 200px;
+  }
+  
   p {
     
     position: absolute;
@@ -179,8 +184,29 @@ button, input {
   
 }
 
-.profile-card {
-  height: 200px;
+.profile {
+  height: 160px;
+  margin-top: 24px;
+  h1 {
+    margin-top: 18px;
+    font-size: 36px;
+  }
+}
+
+.user-image-container {
+  padding: 10px;
+  background-color: #eee;
+  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+}
+
+.user-image{
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  img {
+    display: block;
+  }
 }
 
 #footer {
