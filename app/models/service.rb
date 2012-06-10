@@ -4,5 +4,7 @@ class Service
   field :token, :type => String
   field :secret, :type => String
   field :youtube_id, :type => String, :default => nil
-  attr_accessible :provider, :token, :secret
+  attr_accessible :provider, :token, :secret, :youtube_id
+  
+  embedded_in :user
 end

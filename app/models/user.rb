@@ -22,13 +22,14 @@ class User
   end
   
   def add_service_with_omniauth(provider, token, secret, yt_id=nil)
+    p "User model: youtube_id is #{yt_id}"
     ytid = yt_id.present? ? yt_id.split('/')[-1] : nil
     self.services.build(provider: provider, token: token, secret:secret, youtube_id:ytid) if !self.has_service(provider)
     self.save
   end
 
   def has_playlist(url)
-    self.playlists.where('url' => url).count == 0 ? false : true
+    self.playlists.where('url' => url).exists? ? true : false
   end
   
   def like_playlist(source, url, image_url, name)
