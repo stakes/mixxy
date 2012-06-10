@@ -7,9 +7,10 @@
     %title= content_for?(:title) ? yield(:title) : "Mixxy"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
+    %meta{:property=>"fb:app_id", :content => "380684265312885"}
     %meta{:property=>"og:title", :content => "#{@playlist.name}"}
     %meta{:property=>"og:image", :content => "#{@playlist.image_url}"}
-    %meta{:property=>"og:type", :content => "playlist"}
+    %meta{:property=>"og:type", :content => "mixxyapp:playlist"}
     %meta{:property=>"og:description", :content => "Checkout #{@playlist.name} on Mixxy!"}
 	
     = stylesheet_link_tag "application", :media => "all"

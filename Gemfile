@@ -25,6 +25,7 @@ gem 'omniauth-youtube'
 
 gem 'koala'
 gem 'rdio_api', :git => 'git://github.com/stakes/rdio_api.git'
+# gem 'rdio_api', :path => "/Users/skierdb526/Documents/rdio_api"
 gem 'soundcloud'
 gem 'meta-spotify'
 gem 'youtube_it'
