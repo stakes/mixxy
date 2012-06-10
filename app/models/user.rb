@@ -4,9 +4,12 @@ class User
   field :uid, :type => String
   field :name, :type => String
   field :email, :type => String
+  field :likes, :type => Array, :default => []
   attr_accessible :provider, :uid, :name, :email
   embeds_many :services
   include YTPlaylistImporter
+  has_and_belongs_to_many :playlists
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
@@ -23,6 +26,20 @@ class User
     self.services.build(provider: provider, token: token, secret:ytid) if !self.has_service(provider)
     self.save
   end
+
+  def has_playlist(url)
+    self.playlists.where('url' => url).count == 0 ? false : true
+  end
+  
+  def like_playlist(source, url, image_url, name)
+
+    p = Playlist.where(url: url).first
+    p = Playlist.create(source: source, url: url, image_url: image_url, name: name) if p.blank?
+
+    self.likes << p.id if !self.likes.include?(p.id)
+    self.save
+    
+  end    
   
   def has_service(service)
     self.services.where('provider' => service).count == 0 ? false : true

@@ -10,13 +10,34 @@ $ ->
   player = new Player()
   is_open = false
   
-  $('.item').live('click', (e) ->
-    player.populate($(@).attr('data-source'), $(@).attr('data-url'))
+  $('.item img').live('click', (e) ->
+    p = $(@).parent()
+    player.populate(p.attr('data-source'), p.attr('data-url'))
     if (!is_open)
       $('#playlist-grid').css('margin-right', parseInt($('#container').css('margin-right'), 10)+240)
       is_open = true
     $c.masonry('reload')
     e.preventDefault()
+  )
+  $('.item a.like').live('click', (e) ->
+    e.preventDefault()
+    if window.MIXXY.current_user?
+      console.log($(@).parent().parent())
+      $.post(
+        '/api/like'
+        {
+          source: $(@).parent().parent().attr('data-source')
+          url: $(@).parent().parent().attr('data-url')
+          image_url: $(@).parent().parent().find('img').attr('src')
+          name: $(@).parent().parent().find('p').html()
+        }
+        (data) ->
+          console.log(data)
+      )
+    else
+      $m = $(ich.login_modal())
+      $m.modal()
+    
   )
   
   $s.submit((e) ->
@@ -40,8 +61,7 @@ $ ->
         
     ) 
   )
-  
-  
+
   
   $c.imagesLoaded () ->
     $c.masonry(

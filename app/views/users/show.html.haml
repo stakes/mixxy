@@ -6,3 +6,14 @@
     %a{:href => '/auth/soundcloud'} ADD Soundcloud!
   -if !current_user.has_service("youtube")
     %a{:href => '/auth/youtube'} ADD YouTube!
+    
+
+#container
+  #tile-container
+    - @likes.each do |obj|
+      .item{:data => {:source => obj['source'], :url => obj['playlist_url']}}
+        %p= obj['name']
+        .controls
+          .source= obj['source']
+          %a.like{:href => '/api/like'} Like
+        %img{:src => obj['image_url']}

@@ -22,18 +22,28 @@ class ApiController < ApplicationController
     end
     
     # soundcloud
-    soundcloud = Soundcloud.new(:client_id => ENV["SC_APP_ID"])
+    soundcloud = Soundcloud.new(:client_id => ENV["SC_APP_KEY"])
     sc_res = soundcloud.get('/playlists', :q => q, :limit => 12)
     sc_res.each do |r|
       obj = {}
+      
+      logger.info "starting"
+      
       obj['name'] = r.title
       obj['image_url'] = r.artwork_url
-      obj['image_url'] = r.tracks[0].artwork_url if !r.tracks[0].blank?
+      logger.info obj['image_url'].class
+      obj['image_url'] = r.tracks[0].artwork_url if (!r.tracks[0].blank? and obj['image_url'].nil?)
+      logger.info r.tracks[0].artwork_url if !r.tracks[0].blank?
+      logger.info obj['image_url'].class
+      obj['image_url'] = r.user.avatar_url if obj['image_url'].nil?
+      logger.info obj['image_url'].class
+      logger.info r if obj['image_url'].nil?
       obj['playlist_url'] = r.uri
       obj['source'] = 'soundcloud'
       response << obj
     end
     response = response.sort_by { rand }
+    logger.info response
     
     
     # youtubes - LAST
@@ -42,6 +52,13 @@ class ApiController < ApplicationController
     # blend results
     
     render :json => response.to_json
+    
+  end
+  
+  def like_playlist
+    
+    current_user.like_playlist(params[:source], params[:url], params[:image_url], params[:name])
+    render :json => {:resp => 'ok'}
     
   end
   

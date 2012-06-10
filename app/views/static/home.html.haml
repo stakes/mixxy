@@ -1,6 +1,11 @@
-= form_tag('/search', :method => 'get', :id => 'big_search') do
-    = text_field_tag(:query)
-    = submit_tag('Find playlists', :id => 'search_submit')
+#form-container
+    .container
+        .row
+            = form_tag('/search', :method => 'get', :id => 'big_search') do
+                .span7.offset1
+                    = text_field_tag(:query, '', :placeholder => 'I want to listen to...')
+                .span3 
+                    = submit_tag('Find playlists', :id => 'search_submit')
 
 #container
     #tile-container
@@ -9,4 +14,5 @@
                 %p= obj['name']
                 .controls
                     .source= obj['source']
+                    %a.like{:href => '/api/like'} Like
                 %img{:src => obj['image_url']}
