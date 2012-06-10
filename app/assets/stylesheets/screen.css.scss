@@ -10,7 +10,7 @@
 
 html, body {
   height: 100%;
-  background-color: #b7ddec;
+  background-color: #2b434f;
   background-image: url('/assets/bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -62,7 +62,7 @@ p.empty-list-state {
   background-color: #fff;
   padding-bottom: 44px;
   @include box-shadow(rgba(0,0,0,.75) 0 1px 5px);
-  border-top: 4px solid #444;
+  border-top: 4px solid #000;
 }
 
 #player {
@@ -172,16 +172,16 @@ p.empty-list-state {
     }
   }
   a#header-signin, a#header-signin:hover, a#header-signin:active, a#header-signin:visited {
-    margin-top: 20px;
+    margin-top: 23px;
     background-image: url('fb-header-btn.png');
     background-repeat: no-repeat;
     width: 217px;
-    height: 60px;
+    height: 61px;
     display: block;
     background-position: 0 0;
   }
   a#header-signin:hover {
-    background-position: 0 -61px;
+    background-position: 0 -62px;
   }
 }
 
