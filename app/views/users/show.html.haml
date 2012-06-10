@@ -45,24 +45,31 @@
     .tab-content
   
       #collection.tab-pane.active
-        .item-grid-container
-          - @playlists.each do |obj|
-            .item
-              .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
-                %p= obj['name']
-                %img{:src => obj['image_url']}
-                .controls
-                  .source.ir{:class => obj['source']}= obj['source']
-                  %a.like{:href => '/api/like'} Like
-            .back
-      #starred.tab-pane
-        .item-grid-container
-          - @likes.each do |obj|
-            .item
-              .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
-                %p= obj['name']
-                %img{:src => obj['image_url']}
-                .controls
-                  .source.ir{:class => obj['source']}= obj['source']
-                  %a.like{:href => '/api/like'} Like
+        - if @playlists.blank?
+          %p.empty-list-state You haven't added any playlists to your collection yet.
+        - else
+          .item-grid-container
+            - @playlists.each do |obj|
+              .item
+                .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+                  %p= obj['name']
+                  %img{:src => obj['image_url']}
+                  .controls
+                    .source.ir{:class => obj['source']}= obj['source']
+                    %a.like{:href => '/api/like'} Like
               .back
+              
+      #starred.tab-pane
+        - if @likes.blank?
+          %p.empty-list-state You haven't starred any playlists yet.
+        - else
+          .item-grid-container
+            - @likes.each do |obj|
+              .item
+                .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+                  %p= obj['name']
+                  %img{:src => obj['image_url']}
+                  .controls
+                    .source.ir{:class => obj['source']}= obj['source']
+                    %a.like{:href => '/api/like'} Like
+                .back

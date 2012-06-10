@@ -12,6 +12,7 @@ $ ->
   player = new Player()
   
   $('.item img').live('click', (e) ->
+    
     e.preventDefault()
     $('.item.flip .front').children().hide()
     $('.item.flip').removeClass('flip').animate(
@@ -35,7 +36,10 @@ $ ->
       }
       750
       () ->
-        $c.masonry('reload')
+        if $gc.length > 0
+          $gc.masonry('reload')
+        else
+          $c.masonry('reload')
     )
     player.destroy()
     setTimeout(
