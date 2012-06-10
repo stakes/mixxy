@@ -24,16 +24,33 @@
     
     = yield(:head)
   %body
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
+  
+    #abovenav
+      .container
+        .left
+          = image_tag('logo.png')
+        .right
+          - if user_signed_in?
+            %li
+              Logged in as #{link_to current_user.name, user_path(current_user)}
+            %li
+              = link_to('Logout', signout_path)
+          - else
+            = link_to(image_tag('fb-header-btn.png'), signin_path)
+        .clearfix
+        
+  
+    / %header.navbar.navbar-fixed-top
+    /   %nav.navbar-inner
+    /     .container
+    /       = render 'layouts/navigation'
+          
+          
     #main{:role => "main"}
       .container
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
+        .row
+          .span12
+            = render 'layouts/messages'
     
     = render :partial => '/playlists/playlist_widget'          
     = render :partial => '/playlists/playlist_tile'

@@ -2,7 +2,6 @@
 $iconSpritePath: asset-url('glyphicons-halflings.png', image);
 $iconWhiteSpritePath: asset-url('glyphicons-halflings-white.png', image);
 @import "bootstrap";
-body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
 
@@ -47,6 +46,19 @@ button, input {
   width: 240px;
   z-index: 999;
   display: none;
+}
+
+#abovenav {
+  padding: 22px 0;
+  @include box-shadow(rgba(0,0,0,.4) 0 1px 3px);
+  z-index: 1000;
+  background-color: #eee;
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
 }
 
 .item {
