@@ -40,6 +40,7 @@ class User
     logger.info "http://mixxy.co/playlists/#{p.id.to_s}"
     
     @graph = Koala::Facebook::GraphAPI.new(self.get_auth('facebook').token)
+    
     @graph.put_connections("me", "mixxyapp:star", :playlist => "http://mixxy.co/playlists/#{p.id.to_s}")
 
     self.likes << p.id if !self.likes.include?(p.id)
@@ -58,9 +59,9 @@ class User
     end
     logger.info "the playlist url in aDD"
     logger.info "http://mixxy.co/playlists/#{p.id.to_s}"
-    puts p
+    puts p.inspect
     @graph = Koala::Facebook::GraphAPI.new(self.get_auth('facebook').token)
-    puts "about to try this"
+    puts self.inspect
     @graph.put_connections("me", "mixxyapp:add", :playlist => "http://mixxy.co/playlists/#{p.id.to_s}")
     
     self.save
