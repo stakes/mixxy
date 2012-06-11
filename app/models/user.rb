@@ -36,10 +36,8 @@ class User
 
     p = Playlist.where(url: url).first
     p = Playlist.create(source: source, url: url, image_url: image_url, name: name) if p.blank?
-    logger.info "the playlist url IN LIKE"
-    logger.info "http://mixxy.co/playlists/#{p.id.to_s}"
-    
     @graph = Koala::Facebook::GraphAPI.new(self.get_auth('facebook').token)
+    
     @graph.put_connections("me", "mixxyapp:star", :playlist => "http://mixxy.co/playlists/#{p.id.to_s}")
 
     self.likes << p.id if !self.likes.include?(p.id)
@@ -56,11 +54,7 @@ class User
     else
       p = like_playlist(source, url, image_url, name)
     end
-    logger.info "the playlist url in aDD"
-    logger.info "http://mixxy.co/playlists/#{p.id.to_s}"
-    puts p
     @graph = Koala::Facebook::GraphAPI.new(self.get_auth('facebook').token)
-    puts "about to try this"
     @graph.put_connections("me", "mixxyapp:add", :playlist => "http://mixxy.co/playlists/#{p.id.to_s}")
     
     self.save
