@@ -4,7 +4,7 @@ module YTPlaylistImporter
     playlists = []
     feed['feed']['entry'].each {|entry| playlists << {
       'source' => 'youtube',
-      'playlist-url' => entry['link'][entry['link'].index {|l| l['rel']=='self'}]['href'],
+      'playlist_url' => entry['link'][entry['link'].index {|l| l['rel']=='self'}]['href'],
       'name' => entry['title']['$t'],
       'image_url' => entry['media$group']['media$thumbnail'][2]['url'],
       'username' => youtube_username
