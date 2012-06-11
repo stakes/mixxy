@@ -9,6 +9,8 @@ class User
   embeds_many :services
   include YTPlaylistImporter
   has_and_belongs_to_many :playlists
+  
+  after_create :send_message
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -88,6 +90,10 @@ class User
   
   def youtube_id
     has_youtube ? youtube_auth.youtube_id : ""
+  end
+  
+  def send_message
+    Support.welcome_to_mixxy(self).deliver
   end
 end
 
