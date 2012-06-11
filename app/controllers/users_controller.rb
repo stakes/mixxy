@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     data = current_user.youtube_playlists
     render :json => data
   end
+
   
   protected
   def get_rdio_client

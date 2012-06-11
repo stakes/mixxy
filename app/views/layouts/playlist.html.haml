@@ -7,9 +7,16 @@
     %title= content_for?(:title) ? yield(:title) : "Mixxy"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
+    %meta{:property=>"fb:app_id", :content => "380684265312885"}
+    %meta{:property=>"og:title", :content => "#{@playlist.name}"}
+    %meta{:property=>"og:image", :content => "#{@playlist.image_url}"}
+    %meta{:property=>"og:type", :content => "mixxyapp:playlist"}
+    %meta{:property=>"og:description", :content => "Checkout #{@playlist.name} on Mixxy!"}
+	
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application", "jquery.masonry.min", "icanhaz.min"
     = csrf_meta_tags
+    
     = javascript_include_tag "http://use.typekit.com/odl4nyn.js"
     :javascript
         try{Typekit.load();}catch(e){}
@@ -30,15 +37,10 @@
           = link_to(image_tag('logo.png'), '/')
         .right
           - if user_signed_in?
-            = link_to('Log out', signout_path, :id => 'signout')
-            .clearfix
-            .user-login
-              
-            %p 
-              %a{:href => '/me'}
-                %img{:src => "http://graph.facebook.com/#{current_user.uid}/picture?type=square"}
-                %span= current_user.name
-              
+            %li
+              Logged in as #{link_to current_user.name, '/me'}
+            %li
+              = link_to('Logout', signout_path)
           - else
             = link_to('Sign up with Facebook', signin_path, :id => 'header-signin', :class => 'ir')
         .clearfix
@@ -71,8 +73,6 @@
 
 
     #footer
-      .container
-        %p Built by <a href="http://twitter.com/stakelon" target="_blank">@stakelon</a>, <a href="http://twitter.com/drewbaumann" target="_blank">@drewbaumann</a> and <a href="http://twitter.com/harpaa01" target="_blank">@harpaa01</a> at #hackhollywood on June 9th &amp; 10th, 2012. 
 
     #login-modal.modal.hide
       .modal-header

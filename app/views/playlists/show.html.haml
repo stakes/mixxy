@@ -1,15 +1,12 @@
 %p#notice= notice
-
-%p
-  %b Name:
-  = @playlist.name
-%p
-  %b Url:
-  = @playlist.url
-%p
-  %b Source:
-  = @playlist.source
-
-= link_to 'Edit', edit_playlist_path(@playlist)
-
-= link_to 'Back', playlists_path
+  
+.item-grid-container
+  .item
+    .front.playlist-item{:data => {:source => @playlist['source'], :url => @playlist['url']}}
+      %p= @playlist['name']
+      %img{:src => @playlist['image_url']}
+      .controls
+        .source.ir{:class => @playlist['source']}= @playlist['source']
+        %a.like{:href => '/api/like'} Like
+    .back
+  

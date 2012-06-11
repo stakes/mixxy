@@ -2,6 +2,7 @@
 class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.json
+  layout "playlist"
   def index
     @playlists = Playlist.all
 
