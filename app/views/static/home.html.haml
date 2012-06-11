@@ -12,7 +12,7 @@
     #tile-container
         - @playlists.each do |obj|
             .item
-                .front.playlist-item{:data => {:source => obj['source'], :url => obj['playlist_url']}}
+                .front.playlist-item{:data => {:source => obj['source'], :url => obj['url'], :name => obj['name'], :src => obj['image_url']}}
                     %p= obj['name']
                     %img{:src => obj['image_url']}
                     .controls

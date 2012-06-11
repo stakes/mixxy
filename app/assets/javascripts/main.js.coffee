@@ -26,7 +26,7 @@ $ ->
     )
     p = $(@).parent()
     w = 460
-    w = 700 if p.attr('data-source') == 'youtube'
+    w = 640 if p.attr('data-source') == 'youtube'
     $pt = p.parent()
     $pt.addClass('flip')
     $pt.animate(
@@ -56,14 +56,16 @@ $ ->
   $('.item a.like').live('click', (e) ->
     e.preventDefault()
     if window.MIXXY.current_user?
-      e.addClass('liked')
+      $(@).addClass('liked')
+      console.log($(@).parent().parent().attr('data-src'))
+      console.log($(@).parent().parent().attr('data-name'))
       $.post(
         '/api/like'
         {
           source: $(@).parent().parent().attr('data-source')
           url: $(@).parent().parent().attr('data-url')
-          image_url: $(@).parent().parent().find('img').attr('src')
-          name: $(@).parent().parent().find('p').html()
+          image_url: $(@).parent().parent().attr('data-src')
+          name: $(@).parent().parent().attr('data-name')
         }
         (data) ->
           # TODO: visual feedback on like

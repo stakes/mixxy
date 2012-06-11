@@ -60,12 +60,16 @@
           .item-grid-container
             - @playlists.each do |obj|
               .item
-                .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+                .front.playlist-item{:data => {:source => obj['source'], :url => obj['url'], :name => obj['name'], :src => obj['image_url']}}
                   %p= obj['name']
                   %img{:src => obj['image_url']}
                   .controls
                     .source.ir{:class => obj['source']}= obj['source']
-                    %a.ir.like{:href => '/api/like'} Like
+                    - if !current_user.blank?
+                      - if current_user.id != @user.id
+                        %a.ir.like{:href => '/api/like'} Like
+                    - else
+                      %a.ir.like{:href => '/api/like'} Like
                 .back
               
       #starred.tab-pane
@@ -75,10 +79,14 @@
           .item-grid-container
             - @likes.each do |obj|
               .item
-                .front.playlist-item{:data => {:source => obj['source'], :url => obj['url']}}
+                .front.playlist-item{:data => {:source => obj['source'], :url => obj['url'], :name => obj['name'], :src => obj['image_url']}}
                   %p= obj['name']
                   %img{:src => obj['image_url']}
                   .controls
                     .source.ir{:class => obj['source']}= obj['source']
-                    %a.ir.like{:href => '/api/like'} Like
+                    - if !current_user.blank?
+                      - if current_user.id != @user.id
+                        %a.ir.like{:href => '/api/like'} Like
+                    - else
+                      %a.ir.like{:href => '/api/like'} Like
                 .back

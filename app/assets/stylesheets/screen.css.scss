@@ -492,14 +492,27 @@ p.loading-state {
 }
 
 #footer {
-  height: 240px;
-  margin-top: 20px;
+  text-align: center;
+  font-style: oblique;
+  font-weight: normal;
+  height: 120px;
+  margin-top: 120px;
+  color: #7896a4;
+  font-size: 14px;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.75);
+  a {
+    color: #eee;
+    text-decoration: underline;
+  } 
 }
 
 
 
 
 // Face-smashing 3d transforms
+.item .back .player-container {
+  margin: 10px;
+}
 .item {
 	-webkit-perspective: 600px;
 	-moz-perspective: 600px;
