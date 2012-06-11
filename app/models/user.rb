@@ -58,7 +58,9 @@ class User
     end
     logger.info "the playlist url in aDD"
     logger.info "http://mixxy.co/playlists/#{p.id.to_s}"
+    puts p
     @graph = Koala::Facebook::GraphAPI.new(self.get_auth('facebook').token)
+    puts "about to try this"
     @graph.put_connections("me", "mixxyapp:add", :playlist => "http://mixxy.co/playlists/#{p.id.to_s}")
     
     self.save
