@@ -26,7 +26,7 @@ $ ->
     )
     p = $(@).parent()
     w = 460
-    w = 640 if p.attr('data-source') == 'youtube'
+    w = 700 if p.attr('data-source') == 'youtube'
     $pt = p.parent()
     $pt.addClass('flip')
     $pt.animate(
@@ -44,8 +44,7 @@ $ ->
     player.destroy()
     setTimeout(
       () ->
-        console.log($pt)
-        console.log($pt.find('.back'))
+        console.log(p.attr('data-url'))
         player.loadPlayer($pt.find('.back'), p.attr('data-source'), p.attr('data-url'))
       2000
     )
